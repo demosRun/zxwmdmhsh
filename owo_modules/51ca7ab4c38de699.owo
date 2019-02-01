@@ -1,0 +1,46 @@
+<template lang="pug">
+.share-page(o-tap="hideShare")
+  img.share-img(src="https://cunchu.site/ozzx/resource/share.png")
+</template>
+
+<script>
+module.exports = {
+  created: function () {
+    if(autoScaleInfo && autoScaleInfo.hideHeight) {
+      this.$el.getElementsByClassName('share-img')[0].style.top = -autoScaleInfo.hideHeight + 'px'
+    }
+  },
+  showShare: function () {
+    this.$el.style.display = 'block'
+  },
+  hideShare: function () {
+    this.$el.style.display = 'none'
+  },
+  switchShare: function () {
+    if (this.$el.style.display == 'block') {
+      this.$el.style.display = 'none'
+    } else {
+      this.$el.style.display = 'block'
+    }
+  }
+}
+</script>
+
+<style lang="less">
+.share-page {
+  // display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+}
+img {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  width: 67%;
+}  
+</style>

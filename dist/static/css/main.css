@@ -64,3 +64,7 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 .play .scale-box {
   /* top: -500px; */
 }
+
+.share-page {
+  display: none;
+}

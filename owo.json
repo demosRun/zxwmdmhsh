@@ -73,7 +73,6 @@
 		}
 	],
 	"scriptList": [
-		
 		{
 			"name": "autoScale",
 			"src": "./owo_modules/autoScale.js"
@@ -81,10 +80,6 @@
 		{
 			"name": "three.min.js",
 			"src": "http://rmfp.people.com.cn/img/MAIN/2020/08/120400/static/js/three.min.js"
-		},
-		{
-			"name": "particle",
-			"src": "./src/particle.js"
 		},
 		{
 			"name": "main",
@@ -122,6 +117,16 @@
 			"name": "music",
 			"src": "https://template.owo.ink/bc59e31ef893b3fd.owo",
 			"type": "block"
+		},
+		{
+			"name": "share",
+			"src": "https://template.owo.ink/51ca7ab4c38de699.owo",
+			"type": "block"
+		},
+		{
+			"name": "page2",
+			"src": "/src/page/page2.owo",
+			"type": "page"
 		}
 	],
 	"mode": {

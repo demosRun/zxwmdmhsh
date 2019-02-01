@@ -1,4 +1,4 @@
-// Fri Jan 29 2021 17:16:21 GMT+0800 (GMT+08:00)
+// Fri Feb 01 2019 17:15:04 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},event: {}};
 /* 方法合集 */
 var _owo = {
@@ -271,6 +271,37 @@ _owo.cutStringArray = function (original, before, after, index, inline) {
 
 
 
+/**
+ * 赋予节点动画效果
+ * @param  {string} name 动画效果名称
+ * @param  {dom} dom 节点
+ */
+owo.animate = function (name, dom, delay, callBack) {
+  // 都使用IE了效果还重要吗
+  if (_owo.isIE) return
+  var owoAni = dom.getAttribute('o-animation')
+  if (owoAni) {
+    dom.setAttribute('o-animation', owoAni + '-suspend')
+  }
+  dom.classList.add(name)
+  dom.classList.add('owo-animated')
+  if (delay) {
+    dom.style.animationDelay = delay + 'ms'
+  }
+  dom.addEventListener('animationend', animateEnd)
+  function animateEnd () {
+    if (callBack) callBack(dom)
+    dom.classList.remove(name)
+    dom.classList.remove('owo-animated')
+    if (delay) {
+      dom.style.animationDelay = ''
+    }
+    if (owoAni) {
+      dom.setAttribute('o-animation', owoAni)
+    }
+  }
+}
+
 // 页面切换
 
 
@@ -483,6 +514,15 @@ owo.go = function (aniStr) {
   }
 }
 
+
+// 待修复 跳转返回没有了
+var toList = document.querySelectorAll('[go]')
+for (var index = 0; index < toList.length; index++) {
+  var element = toList[index]
+  element.onclick = function () {
+    owo.go(this.attributes['go'].value)
+  }
+}
 
 // 沙盒运行
 function shaheRun (code) {

@@ -8,6 +8,10 @@ document.body.addEventListener('touchmove', function (e) {
 }, {passive: false})
 
 setTimeout(() => {
+  getSC()
+}, 100);
+
+function getSC () {
   autoScale({
     deviseW: 1508,
     deviseH: 750,
@@ -25,9 +29,35 @@ setTimeout(() => {
       document.querySelector('#container canvas').style.top = -(window.innerWidth - window.innerHeight) / 2 + 'px'
       document.querySelector('.video-box video').style.transform = 'rotate(90deg)'
       document.querySelector('.video-box video').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
-      // document.querySelector('.video-box video').style.top = -(window.innerWidth - window.innerHeight) / 2 + 'px'
       document.querySelector('.video-box video').style.width = window.innerHeight + 'px'
       document.querySelector('.video-box video').style.height = window.innerWidth + 'px'
+
+      document.querySelector('.blinker-box-2').style.transform = 'rotate(90deg)'
+      document.querySelector('.blinker-box-2').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
+      document.querySelector('.blinker-box-2').style.top = (window.innerHeight - window.innerWidth) / 2 + 'px'
+      document.querySelector('.blinker-box-2').style.width = window.innerHeight + 'px'
+      document.querySelector('.blinker-box-2').style.height = window.innerWidth + 'px'
     }, 800);
   }
-}, 100);
+}
+
+var checkSC = false
+var mql = window.matchMedia('(orientation: portrait)');
+function handleOrientationChange(mql) {
+  if (checkSC) {
+    location.reload();
+  }
+  // location.reload();
+}
+// 输出当前屏幕模式
+handleOrientationChange(mql);
+// 监听屏幕模式变化
+mql.addListener(handleOrientationChange);
+setTimeout(() => {
+  checkSC = true
+}, 500);
+
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}

@@ -32,9 +32,13 @@
     <!-- 页面[loading]-->
     <div class="loading-box page" template="loading" style="display: none;"><div class="scale-box"><img class="loading" src="./static/resource/loading-logo.png"><img class="shanshui" src="./static/resource/shan-loading.png"><div class="loading-bar"><div class="num-bar"></div></div><div class="num">0%</div></div></div>
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: none;"><div id="container" o-tap="next"></div><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'z', 0.1)">左翻</span><span o-tap="changeValue('rotation', 'z', -0.1)">右翻</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div><div class="scale-box scale-box-1"><div class="so so-0"><canvas id="c1"></canvas><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"></div><div class="so so-gaotie-0"><img class="so so-gaotie-1" src="./static/resource/91.png"><img class="so so-gaotie-2" src="./static/resource/90.png"></div></div></div><div class="blinker-box scale-box-2"><div class="scale-box"><div class="so so-heka-0"><img class="so so-heka-1" src="./static/resource/319.png"><img class="so so-heka-2" src="./static/resource/173.png"><img class="so so-heka-3" src="./static/resource/143.png"><div class="so so-heka-4"><img class="so so-heka-5" src="./static/resource/133.png"><img class="so so-heka-6" src="./static/resource/132.png"><img class="so so-heka-7" src="./static/resource/131.png"><img class="so so-heka-8" src="./static/resource/130.png"><img class="so so-heka-9" src="./static/resource/129.png"></div><img class="so so-heka-10" src="./static/resource/108.png"></div><div class="ans-card"><h2>[问题一]</h2><h1> </h1><div class="ans-item ans-item-1" o-tap="select(1)"></div><div class="ans-item ans-item-2" o-tap="select(2)"></div><img class="fuka" src="./static/resource/xingji.png"></div></div></div><div class="video-box"><img class="close-video" src="./static/resource/close.svg" o-tap="skip"><video object-fill="cover" src=""></video></div><img class="hand" src="./static/resource/hand.png" o-animation="flicker"></div>
+    <div class="page-1 page" template="page1" style="display: none;"><div id="container" o-tap="next"></div><div class="scale-box scale-box-1"><div class="so so-0"><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"></div><div class="so so-gaotie-0"><img class="so so-gaotie-1" src="./static/resource/91.png"><img class="so so-gaotie-2" src="./static/resource/90.png"></div></div></div><div class="blinker-box scale-box-2"><div class="scale-box"><div class="so so-heka-0"><img class="so so-heka-1" src="./static/resource/319.png" o-animation="shrink" go="page2"><img class="so so-heka-2" src="./static/resource/173.png" o-animation="shrink" o-tap="owo.script.share.showShare()"><img class="so so-heka-3" src="./static/resource/143.png" o-animation="flicker"><div class="so so-heka-4"><img class="so so-heka-5" src="./static/resource/133.png" o-tap="showBigShow('./static/resource/133.png')"><img class="so so-heka-6" src="./static/resource/132.png" o-tap="showBigShow('./static/resource/132.png')"><img class="so so-heka-7" src="./static/resource/131.png" o-tap="showBigShow('./static/resource/131.png')"><img class="so so-heka-8" src="./static/resource/130.png" o-tap="showBigShow('./static/resource/130.png')"><img class="so so-heka-9" src="./static/resource/129.png" o-tap="showBigShow('./static/resource/129.png')"></div><img class="so so-heka-10" src="./static/resource/108.png"></div><div class="ans-card"><h2>[问题一]</h2><h1> </h1><div class="ans-item ans-item-1" o-tap="select(1)"></div><div class="ans-item ans-item-2" o-tap="select(2)"></div><div class="fuka"></div></div></div></div><div class="video-box"><img class="close-video" src="./static/resource/close.svg" o-tap="skip"><video object-fill="cover" src="" x5-playsinline="true" x5-video-player-fullscreen="true" preload="auto" x5-video-orientation="portraint" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5"></video></div><div class="hand-box"><img class="hand" src="./static/resource/hand.png" o-animation="flicker"></div><div class="big-image-show blinker-box-2"><img class="close" src="./static/resource/close.png" o-tap="closeBigShow"><img class="show" src="./static/resource/130.png"></div></div>
+    <!-- 页面[page2]-->
+    <div class="page2 page" template="page2" style="display: none;"><img class="bg" src="./static/resource/bg.jpg"><div class="scale-box"><div class="so so-0"><img class="so so-1" src="./static/resource/293.png"><img class="so so-2 ani" src="./static/resource/197.png" style="animation-delay: 3.5s;"><img class="so so-3 ani" src="./static/resource/196.png" style="animation-delay: 4.5s;"><img class="so so-4 ani" src="./static/resource/198.png" style="animation-delay: 4s;"><img class="so so-5 ani" src="./static/resource/244.png" style="animation-delay: 3s;"><img class="so so-6 ani" src="./static/resource/194.png" style="animation-delay: 2.5s;"><img class="so so-7 ani" src="./static/resource/193.png" style="animation-delay: 2s;"><img class="so so-8 ani" src="./static/resource/192.png" style="animation-delay: 1.5s;"><img class="so so-9 ani" src="./static/resource/199.png" style="animation-delay: 1s;"><img class="so so-10 ani" src="./static/resource/190.png" style="animation-delay: 0.5s;"></div><div class="so so-11"><img class="so so-12" src="./static/resource/335.png"><img class="so so-13" src="./static/resource/176.png"></div></div></div>
     <!-- 插件[music]-->
     <div class="music-menu owo-block" template="music" style="display: none;"><img class="music-icon" src="./static/resource/music.svg" o-tap="switchPlay"></div>
+    <!-- 插件[share]-->
+    <div class="share-page owo-block" o-tap="hideShare" template="share" style="display: none;"><img class="share-img" src="https://cunchu.site/ozzx/resource/share.png"></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
@@ -116,7 +120,7 @@ document.addEventListener("WeixinJSBridgeReady", function () {
 owo.script = {
   "loading": {
     "data": {
-      "imgList": [""]
+      "imgList": ["./static/resource/1790.png", "./static/resource/1754.png", "./static/resource/1746.png", "./static/resource/1740.png", "./static/resource/1733.png", "./static/resource/1750.png", "./static/resource/886.png", "./static/resource/1751.png", "./static/resource/1779.png", "./static/resource/1633.png", "./static/resource/1765.png", "./static/resource/1734.png", "./static/resource/1735.png", "./static/resource/bg.jpg", "./static/resource/1749.png", "./static/resource/1641.png", "./static/resource/1739.png", "./static/resource/11.png", "./static/resource/1635.png", "./static/resource/1290.png", "./static/resource/108.png", "./static/resource/312.png", "./static/resource/625.png", "./static/resource/131.png", "./static/resource/132.png", "./static/resource/133.png", "./static/resource/129.png", "./static/resource/130.png", "./static/resource/17.png", "./static/resource/244.png", "./static/resource/197.png", "./static/resource/194.png", "./static/resource/295.png", "./static/resource/196.png", "./static/resource/91.png", "./static/resource/334.png", "./static/resource/193.png", "./static/resource/ans-card.png", "./static/resource/192.png", "./static/resource/198.png", "./static/resource/1661.png", "./static/resource/190.png", "./static/resource/1788.png", "./static/resource/199.png", "./static/resource/1659.png", "./static/resource/1666.png", "./static/resource/1668.png", "./static/resource/loading-logo.png", "./static/resource/1658.png", "./static/resource/1186.png", "./static/resource/90.png", "./static/resource/14.png", "./static/resource/293.png", "./static/resource/shan-loading.png", "./static/resource/335.png", "./static/resource/1636.png", "./static/resource/1639.png", "./static/resource/594.png", "./static/resource/1483.png", "./static/resource/418.png", "./static/resource/109.png", "./static/resource/660.png", "./static/resource/1338.png", "./static/resource/176.png", "./static/resource/319.png", "./static/resource/1330.png", "./static/resource/1489.png", "./static/resource/1630.png", "./static/resource/hand.png", "./static/resource/173.png", "./static/resource/xingji.png", "./static/resource/143.png", "./static/resource/close.png"]
     },
     "show": function show() {
       var mum = owo.query('.num')[0];
@@ -178,16 +182,32 @@ owo.script = {
       "dataGroup": [],
       "videoPlaying": false,
       "videoSrc": "",
-      "dati": [[["内蒙古自治区的首府是哪座城市？", "乌兰浩特市", "呼和浩特市", "", 1], ["马头琴是那一民族的乐器？", "蒙古族", "哈萨克族", "", 0], ["蒙古民族“五畜纳祥”中的“五畜”是指哪些动物？", "马、牛、山羊、狗、鹿", "马、牛、绵羊、山羊、骆驼", "", 1]], [["2020年珠峰的最新高度是多少米？", "8848.86米", "8844.43米", "", 0], ["以下哪个是“巴扎嘿”的意思？", "谢谢拉", "你好", "感叹词", 0]], [["2020年珠峰的最新高度是多少米？", "8848.86米", "8844.43米", 0], ["以下哪个是“巴扎嘿”的意思？", "谢谢拉", "感叹词", 0]], [["维吾尔语中“亚克西”是什么意思？", "朋友", "很好", "漂亮", 1], ["以下哪个是维吾尔族传统乐器？", "冬不拉", "扎年琴", "热瓦普", 2], ["喀纳斯湖在新疆什么地方？", "阿勒泰", "阿克苏", "喀什", 0]], [["冬不拉是哪个民族的乐器？", "蒙古族", "哈萨克族", "朝鲜族", 1], ["“燕子”是哪个民族的经典民歌？", "藏族", "蒙古族", "哈萨克族", 2]], [["中国朝鲜族主要分布在？", "东北地区", "西北地区", "", 0], ["以下哪一个是朝鲜族的传统乐器？", "马头琴", "伽倻琴", "", 1], ["以下哪一个是朝鲜族的传统民歌？", "《阿里郎》", "《山丹丹开花红艳艳》", "", 0]]],
+      "dati": [[["中国朝鲜族主要分布在？", "东北地区", "西北地区", "", 0], ["以下哪一个是朝鲜族的传统乐器？", "马头琴", "伽倻琴", "", 1], ["以下哪一个是朝鲜族的传统民歌？", "《阿里郎》", "《山丹丹开花红艳艳》", "", 0]], [["内蒙古自治区的首府是哪座城市？", "乌兰浩特市", "呼和浩特市", "", 1], ["马头琴是那一民族的乐器？", "蒙古族", "哈萨克族", "", 0], ["蒙古民族“五畜纳祥”中的“五畜”是指哪些动物？", "马、牛、山羊、狗、鹿", "马、牛、绵羊、山羊、骆驼", "", 1]], [["2020年珠峰的最新高度是多少米？", "8848.86米", "8844.43米", "", 0], ["以下哪个是“巴扎嘿”的意思？", "谢谢拉", "你好", "感叹词", 0]], [["维吾尔语中“亚克西”是什么意思？", "朋友", "很好", "漂亮", 1], ["以下哪个是维吾尔族传统乐器？", "冬不拉", "扎年琴", "热瓦普", 2], ["喀纳斯湖在新疆什么地方？", "阿勒泰", "阿克苏", "喀什", 0]], [["冬不拉是哪个民族的乐器？", "蒙古族", "哈萨克族", "朝鲜族", 1], ["“燕子”是哪个民族的经典民歌？", "藏族", "蒙古族", "哈萨克族", 2]]],
       "datiIndex": 0
     },
     "created": function created() {
       var _this2 = this;
 
-      this.init();
+      // 下落动画
+      owo.animate('bounceInDown', this.query('.so-2'), 800);
       setTimeout(function () {
-        update();
+        var screenScale = window.innerWidth / window.innerHeight; // alert(document.querySelector('#container canvas'))
+
+        if (screenScale < 1) {
+          document.querySelector('#container canvas').style.transform = 'rotate(90deg)';
+          document.querySelector('#container canvas').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px';
+          document.querySelector('#container canvas').style.top = -(window.innerWidth - window.innerHeight) / 2 + 'px';
+          document.querySelector('.hand-box').style.transform = 'rotate(90deg)';
+          document.querySelector('.hand-box').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px';
+          document.querySelector('.hand-box').style.top = (window.innerHeight - window.innerWidth) / 2 + 'px';
+          document.querySelector('.hand-box').style.width = window.innerHeight + 'px';
+          document.querySelector('.hand-box').style.height = window.innerWidth + 'px';
+        }
       }, 100);
+      this.init(); // setTimeout(() => {
+      //   update();
+      // }, 100);
+
       setTimeout(function () {
         _this2.query('.hand').style.display = 'block';
       }, 3000);
@@ -195,7 +215,7 @@ owo.script = {
         _this2.skip();
       });
       this.query('.so-gaotie-1').style.left = '-651px';
-      this.query('.so-gaotie-1').style.top = '208px';
+      this.query('.so-gaotie-1').style.top = '218px';
     },
     "init": function init() {
       var container = document.getElementById('container'); // 设立相机
@@ -311,8 +331,8 @@ owo.script = {
 
       switch (this.data.step) {
         case 1:
-          this.query('.hand').style.left = '22%';
-          this.query('.hand').style.top = '79%';
+          this.query('.hand').style.left = '3%';
+          this.query('.hand').style.top = '71%';
           setTimeout(function () {
             _this4.query('.hand').style.display = 'block';
           }, 4000);
@@ -625,7 +645,8 @@ owo.script = {
               z: 0
             }, 0);
             tl.to(chaoxian.position, 3, {
-              y: 350,
+              x: -1402,
+              y: 380,
               z: -625
             }, 0); // 循环往复的动画
 
@@ -639,12 +660,17 @@ owo.script = {
                 y: -385
               });
             }, 1000);
-            _this4.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4';
+            _this4.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_e449c1027856e0ac8d5595d05e5da131.mp4';
           }, 100);
           console.log(chaoxian);
           break;
 
         case 2:
+          this.query('.hand').style.left = '18%';
+          this.query('.hand').style.top = '49%';
+          setTimeout(function () {
+            _this4.query('.hand').style.display = 'block';
+          }, 3000);
           var tl = new TimelineMax();
           tl.to(this.data.dataGroup['chaoxian'].position, 2, {
             x: -1502,
@@ -895,12 +921,15 @@ owo.script = {
               y: 310,
               z: -725
             }, 0);
-            _this4.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4';
+            _this4.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_2dc959d31cfa25bf8fc8a0614fa34cc3.mp4';
           }, 800);
           console.log(menggu);
           break;
 
         case 3:
+          setTimeout(function () {
+            _this4.query('.hand').style.display = 'block';
+          }, 3000);
           var tl = new TimelineMax();
           tl.to(this.data.dataGroup['menggu'].position, 2, {
             x: -2902,
@@ -1150,12 +1179,17 @@ owo.script = {
               y: 190,
               z: -425
             }, 0);
-            _this4.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4';
+            _this4.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_26c45a110c12843996ddd3c0c2ce3c39.mp4';
           }, 800);
           console.log(zangzu);
           break;
 
         case 4:
+          this.query('.hand').style.left = '59%';
+          this.query('.hand').style.top = '49%';
+          setTimeout(function () {
+            _this4.query('.hand').style.display = 'block';
+          }, 3000);
           var tl = new TimelineMax();
           tl.to(this.data.dataGroup['zang'].position, 2, {
             x: -4602,
@@ -1372,12 +1406,17 @@ owo.script = {
               y: 190,
               z: -625
             }, 0);
-            _this4.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4';
+            _this4.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_8a5eb316e3ac81cb725cb301abc1d75a.mp4';
           }, 800);
           console.log(weizu);
           break;
 
         case 5:
+          this.query('.hand').style.left = '6%';
+          this.query('.hand').style.top = '71%';
+          setTimeout(function () {
+            _this4.query('.hand').style.display = 'block';
+          }, 3000);
           var tl = new TimelineMax();
           tl.to(this.data.dataGroup['wei'].position, 2, {
             x: -6802,
@@ -1658,7 +1697,7 @@ owo.script = {
               y: 290,
               z: -625
             }, 0);
-            _this4.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4';
+            _this4.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_487e3ab99baff2ec3b24a1c8b7cccb94.mp4';
           }, 800);
           console.log(ha);
           break;
@@ -1717,24 +1756,43 @@ owo.script = {
       var _this7 = this;
 
       console.log('选择了!');
+      this.query('.ans-card').classList.add('active');
 
       if (owo.script.page1.data.step < 5) {
-        this.query('.scale-box-2').style.top = '-100%';
         setTimeout(function () {
+          _this7.query('.scale-box-2').style.top = '-100%';
+        }, 2000);
+        setTimeout(function () {
+          _this7.query('.ans-card').classList.remove('active');
+
           _this7.step();
-        }, 800);
+        }, 2000);
       } else {
-        this.query('.ans-card').style.display = 'none';
-        this.query('.so-heka-0').style.display = 'block';
+        this.query('.ans-card').classList.add('active');
+        setTimeout(function () {
+          _this7.query('.ans-card').style.display = 'none';
+          _this7.query('.so-heka-0').style.display = 'block';
+        }, 3000);
       }
     },
     "showAns": function showAns() {
-      var datiObj = this.data.dati[this.data.step - 1][this.data.datiIndex];
+      console.log(this.data.step);
+      var datiItem = this.data.dati[this.data.step - 1];
+      var num = getRndInteger(0, datiItem.length);
+      console.log(num);
+      var datiObj = datiItem[num];
       console.log(datiObj);
       this.query('.ans-card h1').innerText = datiObj[0];
       this.query('.ans-card .ans-item-1').innerText = 'A.' + datiObj[1];
       this.query('.ans-card .ans-item-2').innerText = 'B.' + datiObj[2];
       this.query('.scale-box-2').style.top = '0';
+    },
+    "closeBigShow": function closeBigShow() {
+      this.query('.big-image-show').style.display = 'none';
+    },
+    "showBigShow": function showBigShow(url) {
+      this.query('.big-image-show .show').src = url;
+      this.query('.big-image-show').style.display = 'block';
     }
   },
   "music": {
@@ -1766,13 +1824,54 @@ owo.script = {
         icon.classList.remove('active');
       }
     }
+  },
+  "share": {
+    "created": function created() {
+      if (autoScaleInfo && autoScaleInfo.hideHeight) {
+        this.$el.getElementsByClassName('share-img')[0].style.top = -autoScaleInfo.hideHeight + 'px';
+      }
+    },
+    "showShare": function showShare() {
+      this.$el.style.display = 'block';
+    },
+    "hideShare": function hideShare() {
+      this.$el.style.display = 'none';
+    },
+    "switchShare": function switchShare() {
+      if (this.$el.style.display == 'block') {
+        this.$el.style.display = 'none';
+      } else {
+        this.$el.style.display = 'block';
+      }
+    }
+  },
+  "page2": {
+    "created": function created() {
+      var _this8 = this;
+
+      var screenScale = window.innerWidth / window.innerHeight; // alert(document.querySelector('#container canvas'))
+
+      if (screenScale < 1) {
+        document.querySelector('.page2 .scale-box').style.transform = 'rotate(90deg)';
+        document.querySelector('.page2 .scale-box').style.width = window.innerHeight + 'px';
+        document.querySelector('.page2 .scale-box').style.height = window.innerWidth + 'px';
+        document.querySelector('.page2 .bg').style.transform = 'rotate(90deg)';
+        document.querySelector('.page2 .bg').style.width = window.innerHeight + 'px';
+        document.querySelector('.page2 .bg').style.height = window.innerWidth + 'px';
+        document.querySelector('.page2 .bg').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px';
+        document.querySelector('.page2 .bg').style.top = (window.innerHeight - window.innerWidth) / 2 + 'px';
+      }
+
+      setTimeout(function () {
+        _this8.query('.so-1').style.opacity = '1';
+      }, 6000);
+    }
   }
 };
 </script>
 
     <script src="./static/js/autoScale.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="http://rmfp.people.com.cn/img/MAIN/2020/08/120400/static/js/three.min.js" type="text/javascript"  charset="UTF-8"></script>
-    <script src="./static/js/particle.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="./static/js/main.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="http://rmfp.people.com.cn/img/MAIN/2020/08/120400/static/js/TweenMax.js" type="text/javascript"  charset="UTF-8"></script>

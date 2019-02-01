@@ -178,7 +178,7 @@ li {
 .page-1 .so-2 {
   left: 393px;
   top: 198px;
-  z-index: -2;
+  z-index: 2;
 }
 
 .page-1 .so-3 {
@@ -269,10 +269,6 @@ li {
   z-index: 99;
 }
 
-.page-1 .so-2 {
-  opacity: 0;
-}
-
 .page-1 .video-box {
   position: absolute;
   left: 0;
@@ -288,7 +284,7 @@ li {
   opacity: 0;
   background-color: black;
   pointer-events: none;
-  z-index: 999;
+  z-index: 998;
 }
 
 .page-1 .video-box video {
@@ -330,7 +326,7 @@ li {
   left: 1189px;
   top: -88px;
   z-index: -1;
-  transition: all 5.5s;
+  transition: all 3.5s;
 }
 
 .page-1 .so-gaotie-2 {
@@ -439,7 +435,12 @@ li {
 .page-1 .ans-card {
   width: 954px;
   height: 465px;
+  overflow: hidden;
   background-image: url('../resource/ans-card.png');
+}
+
+.page-1 .ans-card.active .fuka {
+  bottom: 45px;
 }
 
 .page-1 .ans-card {
@@ -474,8 +475,12 @@ li {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 45px;
+  bottom: -100px;
   margin: 0 auto;
+  transition: bottom 0.5s;
+  width: 429px;
+  height: 77px;
+  background-image: url('../resource/xingji.png');
 }
 
 .page-1 .ans-card .ans-item {
@@ -494,6 +499,46 @@ li {
 
 .page-1 .ans-card .ans-item-2 {
   left: 543px;
+}
+
+.page-1 .blinker-box-2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: none;
+}
+
+.page-1 .blinker-box-2 .show {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 90%;
+}
+
+.page-1 .blinker-box-2 .close {
+  position: absolute;
+  right: 60px;
+  top: 20px;
+}
+
+.page-1 .hand-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .music-menu {
   position: absolute;
@@ -556,5 +601,193 @@ li {
   100% {
     -webkit-transform: rotate(360deg);
   }
+}
+.share-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+}
+
+.share-page img {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  width: 67%;
+}
+.page2 .so {
+  position: absolute;
+}
+
+.page2 .so-0 {
+  left: 256px;
+  top: 176px;
+  width: 987px;
+  height: 485px;
+  z-index: 1;
+}
+
+.page2 .ani {
+  opacity: 0;
+  -webkit-animation: ani 1s 1 0s linear;
+          animation: ani 1s 1 0s linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes ani {
+  0% {
+    transform: scale(4);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes ani {
+  0% {
+    transform: scale(4);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.page2 .so-1 {
+  left: 83px;
+  top: 57px;
+  z-index: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.page2 .so-2 {
+  left: 0px;
+  top: 332px;
+  z-index: -1;
+}
+
+.page2 .so-3 {
+  left: 670px;
+  top: 332px;
+  z-index: -2;
+}
+
+.page2 .so-4 {
+  left: 335px;
+  top: 332px;
+  z-index: -3;
+}
+
+.page2 .so-5 {
+  left: 670px;
+  top: 165px;
+  z-index: -4;
+}
+
+.page2 .so-6 {
+  left: 335px;
+  top: 165px;
+  z-index: -5;
+}
+
+.page2 .so-7 {
+  left: 0px;
+  top: 165px;
+  z-index: -6;
+}
+
+.page2 .so-8 {
+  left: 670px;
+  top: 0px;
+  z-index: -7;
+}
+
+.page2 .so-9 {
+  left: 335px;
+  top: 0px;
+  z-index: -8;
+}
+
+.page2 .so-10 {
+  left: 0px;
+  top: 0px;
+  z-index: -9;
+}
+
+.page2 .so-11 {
+  left: 455px;
+  top: 56px;
+  width: 600px;
+  height: 67px;
+  z-index: -10;
+}
+
+.page2 .so-12 {
+  left: 384px;
+  top: 0px;
+  z-index: -11;
+}
+
+.page2 .so-13 {
+  left: 0px;
+  top: 12px;
+  z-index: -12;
+}
+
+.page2 .bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* 动画效果 */
+@keyframes bounceInDown {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.bounceInDown {
+  animation-name: bounceInDown;
 }
 

@@ -1,24 +1,24 @@
 <template lang="pug">
 .page-1
   #container(o-tap="next")
-  .conn-box
-    input(type="text" o-value="this.data.inputValue")
-    input(type="number" o-value="this.data.beishu")
-    span(o-tap="changeValue('position', 'y', 1)") 上
-    span(o-tap="changeValue('position', 'y', -1)") 下
-    span(o-tap="changeValue('position', 'x', -1)") 左
-    span(o-tap="changeValue('position', 'x', 1)") 右
-    span(o-tap="changeValue('position', 'z', -1)") 前
-    span(o-tap="changeValue('position', 'z', 1)") 后
-    span(o-tap="changeValue('rotation', 'z', 0.1)") 左翻
-    span(o-tap="changeValue('rotation', 'z', -0.1)") 右翻
-    span(o-tap="changeValue('rotation', 'y', 0.1)") 左转
-    span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
-    span(o-tap="changeValue('rotation', 'x', 0.1)") 抬头
-    span(o-tap="changeValue('rotation', 'x', -0.1)") 低头
+  //- .conn-box
+  //-   input(type="text" o-value="this.data.inputValue")
+  //-   input(type="number" o-value="this.data.beishu")
+  //-   span(o-tap="changeValue('position', 'y', 1)") 上
+  //-   span(o-tap="changeValue('position', 'y', -1)") 下
+  //-   span(o-tap="changeValue('position', 'x', -1)") 左
+  //-   span(o-tap="changeValue('position', 'x', 1)") 右
+  //-   span(o-tap="changeValue('position', 'z', -1)") 前
+  //-   span(o-tap="changeValue('position', 'z', 1)") 后
+  //-   span(o-tap="changeValue('rotation', 'z', 0.1)") 左翻
+  //-   span(o-tap="changeValue('rotation', 'z', -0.1)") 右翻
+  //-   span(o-tap="changeValue('rotation', 'y', 0.1)") 左转
+  //-   span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
+  //-   span(o-tap="changeValue('rotation', 'x', 0.1)") 抬头
+  //-   span(o-tap="changeValue('rotation', 'x', -0.1)") 低头
   .scale-box.scale-box-1
     .so.so-0
-      canvas#c1
+      //- canvas#c1
       img.so.so-1(src="@|1338.png|")
       img.so.so-2(src="@|625.png|")
       img.so.so-3(src="@|660.png|" o-animation="shrink" o-tap="play")
@@ -32,26 +32,30 @@
   .blinker-box.scale-box-2
     .scale-box
       .so.so-heka-0
-        img.so.so-heka-1(src="@|319.png|")
-        img.so.so-heka-2(src="@|173.png|")
-        img.so.so-heka-3(src="@|143.png|")
+        img.so.so-heka-1(src="@|319.png|" o-animation="shrink" go="page2")
+        img.so.so-heka-2(src="@|173.png|" o-animation="shrink" o-tap="owo.script.share.showShare()")
+        img.so.so-heka-3(src="@|143.png|" o-animation="flicker")
         .so.so-heka-4
-          img.so.so-heka-5(src="@|133.png|")
-          img.so.so-heka-6(src="@|132.png|")
-          img.so.so-heka-7(src="@|131.png|")
-          img.so.so-heka-8(src="@|130.png|")
-          img.so.so-heka-9(src="@|129.png|")
+          img.so.so-heka-5(src="@|133.png|" o-tap="showBigShow('@|133.png|')")
+          img.so.so-heka-6(src="@|132.png|" o-tap="showBigShow('@|132.png|')")
+          img.so.so-heka-7(src="@|131.png|" o-tap="showBigShow('@|131.png|')")
+          img.so.so-heka-8(src="@|130.png|" o-tap="showBigShow('@|130.png|')")
+          img.so.so-heka-9(src="@|129.png|" o-tap="showBigShow('@|129.png|')")
         img.so.so-heka-10(src="@|108.png|")
       .ans-card
         h2 [问题一]
         h1 
         .ans-item.ans-item-1(o-tap="select(1)")
         .ans-item.ans-item-2(o-tap="select(2)")
-        img.fuka(src="@|xingji.png|")
+        .fuka
   .video-box
     img.close-video(src="@|close.svg|" o-tap="skip")
-    video(object-fill="cover" src="")
-  img.hand(src="@|hand.png|" o-animation="flicker")
+    video(object-fill="cover" src="" x5-playsinline="true" x5-video-player-fullscreen="true" preload="auto" x5-video-orientation="portraint" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5")
+  .hand-box
+    img.hand(src="@|hand.png|" o-animation="flicker")
+  .big-image-show.blinker-box-2
+    img.close(src="@|close.png|" o-tap="closeBigShow")
+    img.show(src="@|130.png|")
 </template>
 
 <script>
@@ -78,6 +82,11 @@
       videoSrc: '',
       dati: [
         [
+          ['中国朝鲜族主要分布在？', '东北地区', '西北地区', '', 0],
+          ['以下哪一个是朝鲜族的传统乐器？', '马头琴', '伽倻琴', '', 1],
+          ['以下哪一个是朝鲜族的传统民歌？', '《阿里郎》', '《山丹丹开花红艳艳》', '', 0],
+        ],
+        [
           ['内蒙古自治区的首府是哪座城市？', '乌兰浩特市', '呼和浩特市', '', 1],
           ['马头琴是那一民族的乐器？', '蒙古族', '哈萨克族', '', 0],
           ['蒙古民族“五畜纳祥”中的“五畜”是指哪些动物？', '马、牛、山羊、狗、鹿', '马、牛、绵羊、山羊、骆驼', '', 1],
@@ -87,10 +96,6 @@
           ['以下哪个是“巴扎嘿”的意思？', '谢谢拉', '你好', '感叹词', 0],
         ],
         [
-          ['2020年珠峰的最新高度是多少米？', '8848.86米', '8844.43米', 0],
-          ['以下哪个是“巴扎嘿”的意思？', '谢谢拉', '感叹词', 0]
-        ],
-        [
           ['维吾尔语中“亚克西”是什么意思？', '朋友', '很好', '漂亮', 1],
           ['以下哪个是维吾尔族传统乐器？', '冬不拉', '扎年琴', '热瓦普' , 2],
           ['喀纳斯湖在新疆什么地方？', '阿勒泰', '阿克苏', '喀什', 0]
@@ -98,20 +103,32 @@
         [
           ['冬不拉是哪个民族的乐器？', '蒙古族', '哈萨克族', '朝鲜族', 1],
           ['“燕子”是哪个民族的经典民歌？', '藏族', '蒙古族', '哈萨克族' , 2]
-        ],
-        [
-          ['中国朝鲜族主要分布在？', '东北地区', '西北地区', '', 0],
-          ['以下哪一个是朝鲜族的传统乐器？', '马头琴', '伽倻琴', '', 1],
-          ['以下哪一个是朝鲜族的传统民歌？', '《阿里郎》', '《山丹丹开花红艳艳》', '', 0],
         ]
       ],
       datiIndex: 0
     },
     created: function () {
-      this.init()
+      // 下落动画
+      owo.animate('bounceInDown', this.query('.so-2'), 800)
       setTimeout(() => {
-        update();
+        var screenScale = window.innerWidth / window.innerHeight
+        // alert(document.querySelector('#container canvas'))
+        if (screenScale < 1) {
+          document.querySelector('#container canvas').style.transform = 'rotate(90deg)'
+          document.querySelector('#container canvas').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
+          document.querySelector('#container canvas').style.top = -(window.innerWidth - window.innerHeight) / 2 + 'px'
+
+          document.querySelector('.hand-box').style.transform = 'rotate(90deg)'
+          document.querySelector('.hand-box').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
+          document.querySelector('.hand-box').style.top = (window.innerHeight - window.innerWidth) / 2 + 'px'
+          document.querySelector('.hand-box').style.width = window.innerHeight + 'px'
+          document.querySelector('.hand-box').style.height = window.innerWidth + 'px'
+        }
       }, 100);
+      this.init()
+      // setTimeout(() => {
+      //   update();
+      // }, 100);
       setTimeout(() => {
         this.query('.hand').style.display = 'block'
       }, 3000);
@@ -119,7 +136,7 @@
         this.skip()
       })
       this.query('.so-gaotie-1').style.left = '-651px'
-      this.query('.so-gaotie-1').style.top = '208px'
+      this.query('.so-gaotie-1').style.top = '218px'
     },
     init: function () {
       var container = document.getElementById('container');
@@ -234,8 +251,8 @@
       this.query('.hand').style.display = 'none'
       switch (this.data.step) {
         case 1:
-          this.query('.hand').style.left = '22%'
-          this.query('.hand').style.top = '79%'
+          this.query('.hand').style.left = '3%'
+          this.query('.hand').style.top = '71%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
           }, 4000);
@@ -264,7 +281,8 @@
               z: 0
             }, 0)
             tl.to(chaoxian.position, 3, {
-              y: 350,
+              x: -1402,
+              y: 380,
               z: -625,
             }, 0)
             // 循环往复的动画
@@ -279,12 +297,17 @@
               });
               
             }, 1000);
-            this.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4'
+            this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_e449c1027856e0ac8d5595d05e5da131.mp4'
           }, 100);
           console.log(chaoxian)
           break;
         
         case 2:
+          this.query('.hand').style.left = '18%'
+          this.query('.hand').style.top = '49%'
+          setTimeout(() => {
+            this.query('.hand').style.display = 'block'
+          }, 3000);
           var tl = new TimelineMax()
           tl.to(this.data.dataGroup['chaoxian'].position, 2, {x: -1502,y: 550,z: 175}, 0)
           temp = [
@@ -308,12 +331,15 @@
               y: 310,
               z: -725,
             }, 0)
-            this.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4'
+            this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_2dc959d31cfa25bf8fc8a0614fa34cc3.mp4'
           }, 800);
           console.log(menggu)
           break;
 
         case 3:
+          setTimeout(() => {
+            this.query('.hand').style.display = 'block'
+          }, 3000);
           var tl = new TimelineMax()
           tl.to(this.data.dataGroup['menggu'].position, 2, {x: -2902,y: 310,z: 273}, 0)
           temp = [
@@ -337,11 +363,16 @@
               y: 190,
               z: -425,
             }, 0)
-            this.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4'
+            this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_26c45a110c12843996ddd3c0c2ce3c39.mp4'
           }, 800);
           console.log(zangzu)
           break;
         case 4:
+          this.query('.hand').style.left = '59%'
+          this.query('.hand').style.top = '49%'
+          setTimeout(() => {
+            this.query('.hand').style.display = 'block'
+          }, 3000);
           var tl = new TimelineMax()
           tl.to(this.data.dataGroup['zang'].position, 2, {x: -4602,y: 190,z: 273}, 0)
           temp = [
@@ -364,11 +395,16 @@
               y: 190,
               z: -625,
             }, 0)
-            this.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4'
+            this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_8a5eb316e3ac81cb725cb301abc1d75a.mp4'
           }, 800);
           console.log(weizu)
           break;
         case 5:
+          this.query('.hand').style.left = '6%'
+          this.query('.hand').style.top = '71%'
+          setTimeout(() => {
+            this.query('.hand').style.display = 'block'
+          }, 3000);
           var tl = new TimelineMax()
           tl.to(this.data.dataGroup['wei'].position, 2, {x: -6802,y: 190,z: 273}, 0)
           temp = [
@@ -393,7 +429,7 @@
               y: 290,
               z: -625,
             }, 0)
-            this.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4'
+            this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_487e3ab99baff2ec3b24a1c8b7cccb94.mp4'
           }, 800);
           console.log(ha)
           break;
@@ -441,25 +477,44 @@
     },
     select: function () {
       console.log('选择了!')
+      this.query('.ans-card').classList.add('active')
       if (owo.script.page1.data.step < 5) {
-        this.query('.scale-box-2').style.top = '-100%'
         setTimeout(() => {
+          this.query('.scale-box-2').style.top = '-100%'
+        }, 2000);
+        
+        setTimeout(() => {
+          this.query('.ans-card').classList.remove('active')
           this.step()
-        }, 800);
+        }, 2000);
       } else {
-        this.query('.ans-card').style.display = 'none'
-        this.query('.so-heka-0').style.display = 'block'
+        this.query('.ans-card').classList.add('active')
+        setTimeout(() => {
+          this.query('.ans-card').style.display = 'none'
+          this.query('.so-heka-0').style.display = 'block'
+        }, 3000);
       }
       
       
     },
     showAns: function () {
-      const datiObj = this.data.dati[this.data.step - 1][this.data.datiIndex]
+      console.log(this.data.step)
+      const datiItem = this.data.dati[this.data.step - 1]
+      const num = getRndInteger(0, datiItem.length)
+      console.log(num)
+      const datiObj = datiItem[num]
       console.log(datiObj)
       this.query('.ans-card h1').innerText = datiObj[0]
       this.query('.ans-card .ans-item-1').innerText = 'A.' + datiObj[1]
       this.query('.ans-card .ans-item-2').innerText = 'B.' + datiObj[2]
       this.query('.scale-box-2').style.top = '0'
+    },
+    closeBigShow: function () {
+      this.query('.big-image-show').style.display = 'none'
+    },
+    showBigShow: function (url) {
+      this.query('.big-image-show .show').src = url
+      this.query('.big-image-show').style.display = 'block'
     }
   }
 </script>
@@ -485,7 +540,7 @@
 .so-2 {
   left: 393px;
   top: 198px;
-  z-index: -2;
+  z-index: 2;
 }
 .so-3 {
   left: 1151px;
@@ -562,9 +617,6 @@ canvas {
   top: 198px;
   z-index: 99;
 }
-.so-2 {
-  opacity: 0;
-}
 .video-box {
   position: absolute;
   left: 0;
@@ -580,7 +632,7 @@ canvas {
   opacity: 0;
   background-color: black;
   pointer-events: none;
-  z-index: 999;
+  z-index: 998;
   video {
     width: 100vw;
     height: 100vh;
@@ -617,7 +669,7 @@ canvas {
   left: 1189px;
   top: -88px;
   z-index: -1;
-  transition: all 5.5s;
+  transition: all 3.5s;
 }
 .so-gaotie-2 {
   left: 0px;
@@ -708,7 +760,13 @@ canvas {
 .ans-card {
   width: 954px;
   height: 465px;
+  overflow: hidden;
   background-image: url('@|ans-card.png|')
+}
+.ans-card.active {
+  .fuka {
+    bottom: 45px;
+  }
 }
 .ans-card {
   position: absolute;
@@ -738,8 +796,12 @@ canvas {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 45px;
+    bottom: -100px;
     margin: 0 auto;
+    transition: bottom 0.5s;
+    width: 429px;
+    height: 77px;
+    background-image: url('@|xingji.png|');
   }
   .ans-item {
     font-size: 30px;
@@ -757,5 +819,38 @@ canvas {
   .ans-item-2 {
     left: 543px;
   }
+}
+.blinker-box-2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: none;
+  .show {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 90%;
+  }
+  .close {
+    position: absolute;
+    right: 60px;
+    top: 20px;
+  }
+}
+.hand-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  user-select: none;
 }
 </style>

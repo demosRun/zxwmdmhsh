@@ -1,0 +1,143 @@
+<template lang="pug">
+.page2
+  img.bg(src="@|bg.jpg|")
+  .scale-box
+    .so.so-0
+      img.so.so-1(src="@|293.png|")
+      img.so.so-2.ani(src="@|197.png|" style="animation-delay: 3.5s;")
+      img.so.so-3.ani(src="@|196.png|" style="animation-delay: 4.5s;")
+      img.so.so-4.ani(src="@|198.png|" style="animation-delay: 4s;")
+      img.so.so-5.ani(src="@|244.png|" style="animation-delay: 3s;")
+      img.so.so-6.ani(src="@|194.png|" style="animation-delay: 2.5s;")
+      img.so.so-7.ani(src="@|193.png|" style="animation-delay: 2s;")
+      img.so.so-8.ani(src="@|192.png|" style="animation-delay: 1.5s;")
+      img.so.so-9.ani(src="@|199.png|" style="animation-delay: 1s;")
+      img.so.so-10.ani(src="@|190.png|" style="animation-delay: 0.5s;")
+    .so.so-11
+      img.so.so-12(src="@|335.png|")
+      img.so.so-13(src="@|176.png|")
+</template>
+<script>
+module.exports = {
+  created: function () {
+    var screenScale = window.innerWidth / window.innerHeight
+    // alert(document.querySelector('#container canvas'))
+    if (screenScale < 1) {
+      document.querySelector('.page2 .scale-box').style.transform = 'rotate(90deg)'
+      document.querySelector('.page2 .scale-box').style.width = window.innerHeight + 'px'
+      document.querySelector('.page2 .scale-box').style.height = window.innerWidth + 'px'
+
+      document.querySelector('.page2 .bg').style.transform = 'rotate(90deg)'
+      document.querySelector('.page2 .bg').style.width = window.innerHeight + 'px'
+      document.querySelector('.page2 .bg').style.height = window.innerWidth + 'px'
+      document.querySelector('.page2 .bg').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
+      document.querySelector('.page2 .bg').style.top = (window.innerHeight - window.innerWidth) / 2 + 'px'
+    }
+    setTimeout(() => {
+      this.query('.so-1').style.opacity = '1'
+    }, 6000);
+  }
+}
+</script>
+<style lang="less">
+.so {
+  position: absolute;
+}
+.so-0 {
+  left: 256px;
+  top: 176px;
+  width: 987px;
+  height: 485px;
+  z-index: 1;
+}
+.ani {
+  opacity: 0;
+  animation: ani 1s 1 0s linear;
+  animation-fill-mode: forwards;
+}
+@keyframes ani {
+  0% {
+    transform: scale(4);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+.so-1 {
+  left: 83px;
+  top: 57px;
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+}
+.so-2 {
+  left: 0px;
+  top: 332px;
+  z-index: -1;
+}
+.so-3 {
+  left: 670px;
+  top: 332px;
+  z-index: -2;
+}
+.so-4 {
+  left: 335px;
+  top: 332px;
+  z-index: -3;
+}
+.so-5 {
+  left: 670px;
+  top: 165px;
+  z-index: -4;
+}
+.so-6 {
+  left: 335px;
+  top: 165px;
+  z-index: -5;
+}
+.so-7 {
+  left: 0px;
+  top: 165px;
+  z-index: -6;
+}
+.so-8 {
+  left: 670px;
+  top: 0px;
+  z-index: -7;
+}
+.so-9 {
+  left: 335px;
+  top: 0px;
+  z-index: -8;
+}
+.so-10 {
+  left: 0px;
+  top: 0px;
+  z-index: -9;
+}
+.so-11 {
+  left: 455px;
+  top: 56px;
+  width: 600px;
+  height: 67px;
+  z-index: -10;;
+}
+.so-12 {
+  left: 384px;
+  top: 0px;
+  z-index: -11;
+}
+.so-13 {
+  left: 0px;
+  top: 12px;
+  z-index: -12;
+}
+.bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+</style>
