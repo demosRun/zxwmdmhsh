@@ -1,0 +1,219 @@
+body, html, .page, .page-box {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.owo-animation {
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.owo-animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.owo-animation-forward {
+  z-index: 99;
+}
+
+img {
+  border: none;
+}
+
+[route-active="false"] {
+  display: none;
+}
+
+/* 清除浮动 */
+.clear:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+  zoom: 1;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.loading-box {
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cunchu.site/ozzx/resource/lanse.jpg');
+}
+
+.loading-box .loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -16%;
+  bottom: 0;
+  margin: auto;
+}
+
+.loading-box .loading-bar {
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  height: 20px;
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 2px 3px 9px #5d739c;
+}
+
+.loading-box .num-bar {
+  background-color: #e47d6e;
+  height: 20px;
+  border-radius: 20px;
+  width: 0%;
+  transition: width 0.5s;
+}
+
+.loading-box .num,
+.loading-box .text {
+  position: absolute;
+  top: 0%;
+  bottom: -8%;
+  margin: auto;
+  line-height: 50px;
+  height: 50px;
+  font-size: 36px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.loading-box .text {
+  bottom: -14%;
+}
+[o-animation="shrink"] {
+  -webkit-animation: shrink 1s linear alternate infinite;
+  animation: shrink 1s linear alternate infinite;
+}
+@-webkit-keyframes shrink{
+  0%{-webkit-transform:scale(0.9);}
+  100%{-webkit-transform:scale(1);}
+}
+@keyframes shrink{
+  0%{transform:scale(0.9);}
+  100%{transform:scale(1);}
+}
+
+.page-1 .so-0 {
+  left: 0px;
+  top: 0px;
+  width: 1548px;
+  height: 750px;
+  z-index: 0;
+}
+
+.page-1 .so-1 {
+  left: 584px;
+  top: 80px;
+  z-index: -1;
+}
+
+.page-1 .so-2 {
+  left: 393px;
+  top: 198px;
+  z-index: -2;
+}
+
+.page-1 .so-3 {
+  left: 1183px;
+  top: 344px;
+  z-index: -3;
+}
+
+.page-1 .so-4 {
+  left: 0px;
+  top: 342px;
+  z-index: -4;
+}
+
+.page-1 .so-5 {
+  left: 44px;
+  top: 135px;
+  z-index: -5;
+}
+
+.page-1 .so-6 {
+  left: 0px;
+  top: 0px;
+  width: 397px;
+  height: 419px;
+  z-index: -6;
+}
+
+.page-1 .so-7 {
+  left: 76px;
+  top: 55px;
+  z-index: -7;
+}
+
+.page-1 .so-8 {
+  left: 0px;
+  top: 0px;
+  z-index: -8;
+}
+
+.page-1 .so-9 {
+  left: 0px;
+  top: 0px;
+  z-index: -9;
+}
+
+.page-1 #container {
+  width: 100%;
+  height: 100%;
+}
+
+.page-1 .conn-box {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #ccc;
+  z-index: 99;
+}
+
+.page-1 .conn-box input {
+  display: block;
+}
+
+.page-1 .conn-box span {
+  background-color: #009fe9;
+  color: white;
+  padding: 5px;
+  margin: 5px 5px;
+}
+
+.page-1 .scale-box {
+  display: none;
+}
+

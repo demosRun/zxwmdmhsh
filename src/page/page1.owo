@@ -1,0 +1,236 @@
+<template lang="pug">
+.page-1
+  #container
+  .conn-box
+    input(type="text" o-value="this.data.inputValue")
+    input(type="number" o-value="this.data.beishu")
+    span(o-tap="changeValue('position', 'y', 1)") 上
+    span(o-tap="changeValue('position', 'y', -1)") 下
+    span(o-tap="changeValue('position', 'x', -1)") 左
+    span(o-tap="changeValue('position', 'x', 1)") 右
+    span(o-tap="changeValue('position', 'z', -1)") 前
+    span(o-tap="changeValue('position', 'z', 1)") 后
+    span(o-tap="changeValue('rotation', 'y', 0.1)") 左转
+    span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
+    span(o-tap="changeValue('rotation', 'x', 0.1)") 抬头
+    span(o-tap="changeValue('rotation', 'x', -0.1)") 低头
+  .scale-box
+    .so.so-0
+      img.so.so-1(src="@|1338.png|")
+      img.so.so-2(src="@|625.png|")
+      img.so.so-3(src="@|660.png|" o-animation="shrink")
+      img.so.so-4(src="@|1635.png|")
+      img.so.so-5(src="@|1633.png|")
+      .so.so-6
+        img.so.so-7(src="@|1630.png|")
+        img.so.so-8(src="@|1631.png|")
+      img.so.so-9(src="@|886.png|")
+</template>
+
+<script>
+  infoData = [
+    {"id":886,"name":"bg","itemIndex":45,"opacity":100,"visible":true,"bounds":{"left":0,"top":-0,"index": -393,"right":0,"bottom":750,"width":1548,"height":750,"relativeLeft":0,"relativeTop":0,"relativeRight":0,"relativeBottom":0,"percentageLeft":0,"percentageRight":0,"percentageTop":0,"percentageBottom":0,"percentageHeight":100,"percentageWidth":100,"fileWeight":1548,"fileHeight":750},"typename":"ArtLayer","width":1548,"height":750,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|886.png|"}
+  ]
+  module.exports = {
+    data: {
+      inputValue: '',
+      beishu: 1,
+      shareShow: false,
+      // 允许点击的元素
+      clickObjects: [],
+      playing: false,
+      step: 0,
+      busying: true,
+      nmMusic: null,
+      videoIsPlay: false,
+      nameIsShow: false
+    },
+    created: function () {
+      this.init()
+    },
+    init: function () {
+      var container = document.getElementById('container');
+      // 设立相机
+      camera = new THREE.PerspectiveCamera( 75, window.innerWidth >  window.innerHeight ? (window.innerWidth / window.innerHeight) : (window.innerHeight / window.innerWidth), 0.1, 800 );
+      camera.position.set(0, 0, 90)
+      camera.lookAt(0, 0, 0)
+      // 建立一个场景
+      scene = new THREE.Scene();
+      scene.fog = new THREE.Fog( 0xffffff, 100, 300000)
+      // 像素级的渲染，渲染效果更好
+      renderer = new THREE.WebGLRenderer({
+        // antialias: true,
+        depthTest: false
+      });
+      renderer.setClearColor(0xfffefb, 1.0);
+      renderer.setPixelRatio( window.devicePixelRatio );
+      if (window.innerWidth >  window.innerHeight) renderer.setSize( window.innerWidth, window.innerHeight )
+      else {renderer.setSize( window.innerHeight, window.innerWidth)}
+      container.appendChild( renderer.domElement );
+
+      // renderer.outputEncoding = THREE.sRGBEncoding;
+      // renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+      var pmremGenerator = new THREE.PMREMGenerator( renderer );
+      // pmremGenerator.compileEquirectangularShader();
+
+      window.addEventListener( 'resize', this.onWindowResize, false );
+
+      renderer.setAnimationLoop( render );
+      // renderer.sortObjects = true;
+      // 添加光线
+      // var ambientLight = new THREE.AmbientLight(0xffffff);
+      // scene.add(ambientLight);
+      // var pointLight = new THREE.PointLight("#ffffff");
+      // pointLight.position.set(0,10,0);
+      // scene.add(pointLight);
+      // 添加控制器
+      // controls = new THREE.OrbitControls( camera, container );
+      // controls.target.set( 150, -50, 150 );
+      // controls.update();
+      this.creatMode()
+      function render() {
+				renderer.render( scene, camera );
+      }
+      // this.initThreeClickEvent()
+    },
+    creatMode: function () {
+      // 辅助参考线
+      // var grid = new THREE.GridHelper(500, 100);
+      // grid.rotation.x = 90 / 180 * Math.PI
+      // scene.add(grid);
+      // console.log(infoData)
+      infoData.forEach(element => {
+        const bounds = element.bounds
+        new THREE.TextureLoader().load(element.fileName, (texture) => {
+          const obgW = bounds.width
+          const obgH = bounds.height
+          const objL = bounds.left
+          const objT = bounds.top
+          // console.log(element.name)
+          texture.minFilter = THREE.LinearFilter;
+          // MeshBasicMaterial SpriteMaterial
+          var textObj = new THREE.MeshBasicMaterial({
+            map: texture,
+            opacity: element.opacity / 100,
+            transparent: true,
+            color: 0xffffff,
+            depthTest: false,
+            sizeAttenuation: false
+          });
+          var logo = new THREE.Sprite(textObj);
+          logo.scale.set(element.width, element.height, 0.1);
+          logo.name = element.name
+          console.log(element.name)
+          if (element.rotationY) logo.rotation.y = element.rotationY
+          if (element.rotationX) logo.rotation.x = element.rotationX
+          logo.updateMatrix();
+          
+          logo.position.set(objT, objL, bounds.index || 0);
+          scene.add(logo);
+          if (element.name.startsWith('文字-')) {
+            this.data.clickObjects.push(logo)
+          }
+        })
+      });
+    },
+    changeValue: function (item, key, value) {
+      value = parseFloat(value) * this.data.beishu
+      const target = scene.getObjectByName(this.data.inputValue)
+      
+      if (target) {
+        target[item][key] += value
+        console.log({
+          left: target.position.x,
+          top: -target.position.y,
+          index: target.position.z,
+          rotationY: target.rotation.y
+        })
+      }
+      
+    },
+  }
+</script>
+
+
+<style lang="less">
+.so-0 {
+  left: 0px;
+  top: 0px;
+  width: 1548px;
+  height: 750px;
+  z-index: 0;;
+}
+.so-1 {
+  left: 584px;
+  top: 80px;
+  z-index: -1;
+}
+.so-2 {
+  left: 393px;
+  top: 198px;
+  z-index: -2;
+}
+.so-3 {
+  left: 1183px;
+  top: 344px;
+  z-index: -3;
+}
+.so-4 {
+  left: 0px;
+  top: 342px;
+  z-index: -4;
+}
+.so-5 {
+  left: 44px;
+  top: 135px;
+  z-index: -5;
+}
+.so-6 {
+  left: 0px;
+  top: 0px;
+  width: 397px;
+  height: 419px;
+  z-index: -6;;
+}
+.so-7 {
+  left: 76px;
+  top: 55px;
+  z-index: -7;
+}
+.so-8 {
+  left: 0px;
+  top: 0px;
+  z-index: -8;
+}
+.so-9 {
+  left: 0px;
+  top: 0px;
+  z-index: -9;
+}
+#container {
+  width: 100%;
+  height: 100%;
+}
+.conn-box {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #ccc;
+  z-index: 99;
+  input {
+    display: block;
+  }
+  span {
+    background-color: #009fe9;
+    color: white;
+    padding: 5px;
+    margin: 5px 5px;
+  }
+}
+.scale-box {
+  display: none;
+}
+</style>
