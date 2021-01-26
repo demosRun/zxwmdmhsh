@@ -32,7 +32,7 @@
     <!-- 页面[loading]-->
     <div class="loading-box page" template="loading" style="display: none;"><img class="loading" src="https://cunchu.site/ozzx/resource/loadingLogo.png"><div class="loading-bar"><div class="num-bar"></div></div><span class="text">Loading</span><div class="num">0%</div></div>
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: none;"><div id="container"></div><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div><div class="scale-box"><div class="so so-0"><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink"><img class="so so-4" src="./static/resource/1635.png"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"><img class="so so-8" src="./static/resource/1631.png"></div><img class="so so-9" src="./static/resource/886.png"></div></div></div>
+    <div class="page-1 page" template="page1" style="display: none;"><div id="container"></div><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div><div class="scale-box"><div class="so so-0"><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"><img class="so so-8" src="./static/resource/1631.png"></div></div></div></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
@@ -71,7 +71,41 @@ infoData = [{
   "kind": "NORMAL",
   "isBackgroundLayer": false,
   "fileName": "./static/resource/886.png"
-}];
+}, {
+  "id": 1635,
+  "name": "草地",
+  "itemIndex": 51,
+  "opacity": 100,
+  "visible": true,
+  "bounds": {
+    "left": 110,
+    "top": 258,
+    "index": -497,
+    "right": 1453,
+    "bottom": 750,
+    "width": 1453,
+    "height": 408,
+    "relativeLeft": 0,
+    "relativeTop": 342,
+    "relativeRight": 95,
+    "relativeBottom": 0,
+    "percentageLeft": 0,
+    "percentageRight": 6.13,
+    "percentageTop": 45.6,
+    "percentageBottom": 0,
+    "percentageHeight": 54.4,
+    "percentageWidth": 93.86,
+    "fileWeight": 1453,
+    "fileHeight": 408
+  },
+  "typename": "ArtLayer",
+  "width": 1453,
+  "height": 408,
+  "kind": "NORMAL",
+  "isBackgroundLayer": false,
+  "fileName": "./static/resource/1635.png"
+} // 朝鲜族
+];
 owo.script = {
   "loading": {
     "data": {
@@ -174,15 +208,14 @@ owo.script = {
       // controls = new THREE.OrbitControls( camera, container );
       // controls.target.set( 150, -50, 150 );
       // controls.update();
-
-      this.creatMode();
+      // this.creatMode(infoData, 'main')
 
       function render() {
         renderer.render(scene, camera);
       } // this.initThreeClickEvent()
 
     },
-    "creatMode": function creatMode() {
+    "creatMode": function creatMode(infoData, groupName) {
       var _this2 = this;
 
       // 辅助参考线
@@ -190,6 +223,7 @@ owo.script = {
       // grid.rotation.x = 90 / 180 * Math.PI
       // scene.add(grid);
       // console.log(infoData)
+      var group = new THREE.Group();
       infoData.forEach(function (element) {
         var bounds = element.bounds;
         new THREE.TextureLoader().load(element.fileName, function (texture) {
@@ -215,14 +249,17 @@ owo.script = {
           if (element.rotationY) logo.rotation.y = element.rotationY;
           if (element.rotationX) logo.rotation.x = element.rotationX;
           logo.updateMatrix();
-          logo.position.set(objT, objL, bounds.index || 0);
-          scene.add(logo);
+          logo.position.set(objL, -objT, bounds.index || 0);
+          group.add(logo);
 
           if (element.name.startsWith('文字-')) {
             _this2.data.clickObjects.push(logo);
           }
         });
       });
+      group.name = groupName;
+      scene.add(group);
+      return group;
     },
     "changeValue": function changeValue(item, key, value) {
       value = parseFloat(value) * this.data.beishu;
@@ -236,6 +273,213 @@ owo.script = {
           index: target.position.z,
           rotationY: target.rotation.y
         });
+      }
+    },
+    "play": function play(ind) {
+      this.data.step++;
+      this.$el.classList.add('play');
+
+      switch (this.data.step) {
+        case 1:
+          var temp = [{
+            "id": 1585,
+            "name": "朝鲜族人物",
+            "itemIndex": 8,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 1818,
+              "top": 416,
+              "right": 2308,
+              "bottom": 775,
+              "width": 490,
+              "height": 359,
+              "relativeLeft": 354,
+              "relativeTop": 416,
+              "relativeRight": 745,
+              "relativeBottom": 0,
+              "percentageLeft": 22.27,
+              "percentageRight": 46.88,
+              "percentageTop": 55.46,
+              "percentageBottom": 0,
+              "percentageHeight": 47.86,
+              "percentageWidth": 30.83,
+              "fileWeight": 456,
+              "fileHeight": 334
+            },
+            "typename": "ArtLayer",
+            "width": 490,
+            "height": 359,
+            "kind": "SMARTOBJECT",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1585.png"
+          }, {
+            "id": 109,
+            "name": "鼓",
+            "itemIndex": 7,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 2145,
+              "top": 594,
+              "right": 2364,
+              "bottom": 709,
+              "width": 219,
+              "height": 115,
+              "relativeLeft": 681,
+              "relativeTop": 594,
+              "relativeRight": 689,
+              "relativeBottom": 66,
+              "percentageLeft": 42.85,
+              "percentageRight": 43.36,
+              "percentageTop": 79.2,
+              "percentageBottom": 8.8,
+              "percentageHeight": 15.33,
+              "percentageWidth": 13.78,
+              "fileWeight": 219,
+              "fileHeight": 115
+            },
+            "typename": "ArtLayer",
+            "width": 219,
+            "height": 115,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/109.png"
+          }, {
+            "id": 17,
+            "name": "树",
+            "itemIndex": 6,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 1685,
+              "top": 310,
+              "right": 2093,
+              "bottom": 744,
+              "width": 408,
+              "height": 434,
+              "relativeLeft": 221,
+              "relativeTop": 310,
+              "relativeRight": 960,
+              "relativeBottom": 31,
+              "percentageLeft": 13.9,
+              "percentageRight": 60.41,
+              "percentageTop": 41.33,
+              "percentageBottom": 4.13,
+              "percentageHeight": 57.86,
+              "percentageWidth": 25.67,
+              "fileWeight": 408,
+              "fileHeight": 434
+            },
+            "typename": "ArtLayer",
+            "width": 408,
+            "height": 434,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/17.png"
+          }, {
+            "id": 11,
+            "name": "朝鲜族",
+            "itemIndex": 5,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 1933,
+              "top": 339,
+              "right": 2755,
+              "bottom": 589,
+              "width": 822,
+              "height": 250,
+              "relativeLeft": 469,
+              "relativeTop": 339,
+              "relativeRight": 298,
+              "relativeBottom": 186,
+              "percentageLeft": 29.51,
+              "percentageRight": 18.75,
+              "percentageTop": 45.2,
+              "percentageBottom": 24.8,
+              "percentageHeight": 33.33,
+              "percentageWidth": 51.73,
+              "fileWeight": 817,
+              "fileHeight": 249
+            },
+            "typename": "ArtLayer",
+            "width": 822,
+            "height": 250,
+            "kind": "SMARTOBJECT",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/11.png"
+          }, {
+            "id": 14,
+            "name": "花",
+            "itemIndex": 4,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 2269,
+              "top": 223,
+              "right": 2556,
+              "bottom": 449,
+              "width": 287,
+              "height": 226,
+              "relativeLeft": 805,
+              "relativeTop": 223,
+              "relativeRight": 497,
+              "relativeBottom": 326,
+              "percentageLeft": 50.66,
+              "percentageRight": 31.27,
+              "percentageTop": 29.73,
+              "percentageBottom": 43.46,
+              "percentageHeight": 30.13,
+              "percentageWidth": 18.06,
+              "fileWeight": 283,
+              "fileHeight": 224
+            },
+            "typename": "ArtLayer",
+            "width": 287,
+            "height": 226,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/14.png"
+          }, {
+            "id": 1398,
+            "name": "bg",
+            "itemIndex": 3,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 1464,
+              "top": 0,
+              "right": 3053,
+              "bottom": 750,
+              "width": 1589,
+              "height": 750,
+              "relativeLeft": 0,
+              "relativeTop": 0,
+              "relativeRight": 0,
+              "relativeBottom": 25,
+              "percentageLeft": 0,
+              "percentageRight": 0,
+              "percentageTop": 0,
+              "percentageBottom": 3.33,
+              "percentageHeight": 100,
+              "percentageWidth": 100,
+              "fileWeight": 1589,
+              "fileHeight": 750
+            },
+            "typename": "ArtLayer",
+            "width": 1589,
+            "height": 750,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1398.png"
+          }];
+          var chaoxian = this.creatMode(temp, 'chaoxian');
+          console.log(chaoxian);
+          break;
+
+        default:
+          break;
       }
     }
   }
