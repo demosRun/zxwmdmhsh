@@ -32,7 +32,7 @@
     <!-- 页面[loading]-->
     <div class="loading-box page" template="loading" style="display: none;"><img class="loading" src="https://cunchu.site/ozzx/resource/loadingLogo.png"><div class="loading-bar"><div class="num-bar"></div></div><span class="text">Loading</span><div class="num">0%</div></div>
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: none;"><div id="container"></div><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div><div class="scale-box"><div class="so so-0"><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"><img class="so so-8" src="./static/resource/1631.png"></div></div></div></div>
+    <div class="page-1 page" template="page1" style="display: none;"><div id="container"></div><div class="scale-box"><div class="so so-0"><canvas id="c1"></canvas><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"><img class="so so-8" src="./static/resource/1631.png"></div></div></div></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
@@ -167,15 +167,19 @@ owo.script = {
       "busying": true,
       "nmMusic": null,
       "videoIsPlay": false,
-      "nameIsShow": false
+      "nameIsShow": false,
+      "dataGroup": []
     },
     "created": function created() {
       this.init();
+      setTimeout(function () {
+        update();
+      }, 100);
     },
     "init": function init() {
       var container = document.getElementById('container'); // 设立相机
 
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth > window.innerHeight ? window.innerWidth / window.innerHeight : window.innerHeight / window.innerWidth, 0.1, 800);
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth > window.innerHeight ? window.innerWidth / window.innerHeight : window.innerHeight / window.innerWidth, 0.1, 2000);
       camera.position.set(0, 0, 90);
       camera.lookAt(0, 0, 0); // 建立一个场景
 
@@ -208,7 +212,8 @@ owo.script = {
       // controls = new THREE.OrbitControls( camera, container );
       // controls.target.set( 150, -50, 150 );
       // controls.update();
-      // this.creatMode(infoData, 'main')
+
+      this.creatMode(infoData, 'main').position.set(-165, 0, 30);
 
       function render() {
         renderer.render(scene, camera);
@@ -259,6 +264,7 @@ owo.script = {
       });
       group.name = groupName;
       scene.add(group);
+      this.data.dataGroup[groupName] = group;
       return group;
     },
     "changeValue": function changeValue(item, key, value) {
@@ -281,93 +287,102 @@ owo.script = {
 
       switch (this.data.step) {
         case 1:
+          var tl = new TimelineMax();
+          tl.to(this.data.dataGroup['main'].position, 2, {
+            x: -165,
+            y: 0,
+            z: 866
+          }, 0);
           var temp = [{
-            "id": 1585,
-            "name": "朝鲜族人物",
-            "itemIndex": 8,
+            "id": 1658,
+            "name": "人物",
+            "itemIndex": 11,
             "opacity": 100,
             "visible": true,
             "bounds": {
-              "left": 1818,
-              "top": 416,
-              "right": 2308,
-              "bottom": 775,
-              "width": 490,
-              "height": 359,
-              "relativeLeft": 354,
-              "relativeTop": 416,
-              "relativeRight": 745,
-              "relativeBottom": 0,
-              "percentageLeft": 22.27,
-              "percentageRight": 46.88,
-              "percentageTop": 55.46,
-              "percentageBottom": 0,
-              "percentageHeight": 47.86,
-              "percentageWidth": 30.83,
-              "fileWeight": 456,
-              "fileHeight": 334
+              "left": 1558,
+              "top": 602,
+              "index": 100,
+              "right": 2513,
+              "bottom": 960,
+              "width": 455,
+              "height": 258,
+              "relativeLeft": 740,
+              "relativeTop": 702,
+              "relativeRight": 746,
+              "relativeBottom": 331,
+              "percentageLeft": 38.12,
+              "percentageRight": 38.43,
+              "percentageTop": 58.2,
+              "percentageBottom": 27.44,
+              "percentageHeight": 21.39,
+              "percentageWidth": 23.44,
+              "fileWeight": 455,
+              "fileHeight": 243
             },
             "typename": "ArtLayer",
-            "width": 490,
-            "height": 359,
-            "kind": "SMARTOBJECT",
+            "width": 455,
+            "height": 258,
+            "kind": "NORMAL",
             "isBackgroundLayer": false,
-            "fileName": "./static/resource/1585.png"
+            "fileName": "./static/resource/1658.png"
           }, {
             "id": 109,
             "name": "鼓",
-            "itemIndex": 7,
+            "itemIndex": 10,
             "opacity": 100,
             "visible": true,
             "bounds": {
-              "left": 2145,
-              "top": 594,
-              "right": 2364,
-              "bottom": 709,
-              "width": 219,
-              "height": 115,
-              "relativeLeft": 681,
-              "relativeTop": 594,
-              "relativeRight": 689,
-              "relativeBottom": 66,
-              "percentageLeft": 42.85,
-              "percentageRight": 43.36,
-              "percentageTop": 79.2,
-              "percentageBottom": 8.8,
-              "percentageHeight": 15.33,
-              "percentageWidth": 13.78,
-              "fileWeight": 219,
-              "fileHeight": 115
+              "left": 1348,
+              "top": 651,
+              "index": 100,
+              "right": 2192,
+              "bottom": 901,
+              "width": 134,
+              "height": 70,
+              "relativeLeft": 740,
+              "relativeTop": 831,
+              "relativeRight": 1067,
+              "relativeBottom": 390,
+              "percentageLeft": 38.12,
+              "percentageRight": 54.97,
+              "percentageTop": 68.9,
+              "percentageBottom": 32.33,
+              "percentageHeight": 5.8,
+              "percentageWidth": 6.9,
+              "fileWeight": 134,
+              "fileHeight": 70
             },
             "typename": "ArtLayer",
-            "width": 219,
-            "height": 115,
+            "width": 134,
+            "height": 70,
             "kind": "NORMAL",
             "isBackgroundLayer": false,
             "fileName": "./static/resource/109.png"
           }, {
             "id": 17,
             "name": "树",
-            "itemIndex": 6,
+            "itemIndex": 9,
             "opacity": 100,
             "visible": true,
             "bounds": {
-              "left": 1685,
-              "top": 310,
+              "left": 1013,
+              "top": 517,
+              "index": 100,
               "right": 2093,
-              "bottom": 744,
+              "bottom": 972,
               "width": 408,
               "height": 434,
-              "relativeLeft": 221,
-              "relativeTop": 310,
-              "relativeRight": 960,
-              "relativeBottom": 31,
-              "percentageLeft": 13.9,
-              "percentageRight": 60.41,
-              "percentageTop": 41.33,
-              "percentageBottom": 4.13,
-              "percentageHeight": 57.86,
-              "percentageWidth": 25.67,
+              "relativeLeft": 367,
+              "relativeTop": 538,
+              "relativeRight": 1166,
+              "relativeBottom": 319,
+              "percentageLeft": 18.9,
+              "percentageRight": 60.07,
+              "percentageTop": 44.61,
+              "percentageBottom": 26.45,
+              "percentageHeight": 35.98,
+              "percentageWidth": 21.02,
               "fileWeight": 408,
               "fileHeight": 434
             },
@@ -380,26 +395,27 @@ owo.script = {
           }, {
             "id": 11,
             "name": "朝鲜族",
-            "itemIndex": 5,
+            "itemIndex": 8,
             "opacity": 100,
             "visible": true,
             "bounds": {
-              "left": 1933,
-              "top": 339,
+              "left": 1483,
+              "top": 487,
+              "index": 90,
               "right": 2755,
-              "bottom": 589,
+              "bottom": 817,
               "width": 822,
               "height": 250,
-              "relativeLeft": 469,
-              "relativeTop": 339,
-              "relativeRight": 298,
-              "relativeBottom": 186,
-              "percentageLeft": 29.51,
-              "percentageRight": 18.75,
-              "percentageTop": 45.2,
-              "percentageBottom": 24.8,
-              "percentageHeight": 33.33,
-              "percentageWidth": 51.73,
+              "relativeLeft": 615,
+              "relativeTop": 567,
+              "relativeRight": 504,
+              "relativeBottom": 474,
+              "percentageLeft": 31.68,
+              "percentageRight": 25.96,
+              "percentageTop": 47.01,
+              "percentageBottom": 39.3,
+              "percentageHeight": 20.72,
+              "percentageWidth": 42.34,
               "fileWeight": 817,
               "fileHeight": 249
             },
@@ -412,28 +428,29 @@ owo.script = {
           }, {
             "id": 14,
             "name": "花",
-            "itemIndex": 4,
+            "itemIndex": 7,
             "opacity": 100,
             "visible": true,
             "bounds": {
-              "left": 2269,
-              "top": 223,
+              "left": 1569,
+              "top": 351,
+              "index": 10,
               "right": 2556,
-              "bottom": 449,
+              "bottom": 677,
               "width": 287,
               "height": 226,
-              "relativeLeft": 805,
-              "relativeTop": 223,
-              "relativeRight": 497,
-              "relativeBottom": 326,
-              "percentageLeft": 50.66,
-              "percentageRight": 31.27,
-              "percentageTop": 29.73,
-              "percentageBottom": 43.46,
-              "percentageHeight": 30.13,
-              "percentageWidth": 18.06,
+              "relativeLeft": 951,
+              "relativeTop": 451,
+              "relativeRight": 703,
+              "relativeBottom": 614,
+              "percentageLeft": 48.99,
+              "percentageRight": 36.21,
+              "percentageTop": 37.39,
+              "percentageBottom": 50.91,
+              "percentageHeight": 18.73,
+              "percentageWidth": 14.78,
               "fileWeight": 283,
-              "fileHeight": 224
+              "fileHeight": 226
             },
             "typename": "ArtLayer",
             "width": 287,
@@ -442,39 +459,143 @@ owo.script = {
             "isBackgroundLayer": false,
             "fileName": "./static/resource/14.png"
           }, {
-            "id": 1398,
-            "name": "bg",
+            "id": 1788,
+            "name": "房子",
+            "itemIndex": 6,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 1338,
+              "top": 438,
+              "index": 100,
+              "right": 2945,
+              "bottom": 700,
+              "width": 1506,
+              "height": 162,
+              "relativeLeft": 121,
+              "relativeTop": 538,
+              "relativeRight": 314,
+              "relativeBottom": 591,
+              "percentageLeft": 6.23,
+              "percentageRight": 16.17,
+              "percentageTop": 44.61,
+              "percentageBottom": 49,
+              "percentageHeight": 13.43,
+              "percentageWidth": 77.58,
+              "fileWeight": 1505,
+              "fileHeight": 162
+            },
+            "typename": "ArtLayer",
+            "width": 1506,
+            "height": 162,
+            "kind": "SMARTOBJECT",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1788.png"
+          }, {
+            "id": 1765,
+            "name": "山 拷贝",
+            "itemIndex": 5,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 1487,
+              "top": 335,
+              "right": 3018,
+              "bottom": 695,
+              "width": 1531,
+              "height": 360,
+              "relativeLeft": 169,
+              "relativeTop": 335,
+              "relativeRight": 241,
+              "relativeBottom": 596,
+              "percentageLeft": 8.7,
+              "percentageRight": 12.41,
+              "percentageTop": 27.77,
+              "percentageBottom": 49.41,
+              "percentageHeight": 29.85,
+              "percentageWidth": 78.87,
+              "fileWeight": 1531,
+              "fileHeight": 359
+            },
+            "typename": "ArtLayer",
+            "width": 1531,
+            "height": 360,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1765.png"
+          }, {
+            "id": 1790,
+            "name": "路 拷贝 2",
+            "itemIndex": 4,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 1318,
+              "top": 544,
+              "right": 3158,
+              "bottom": 1291,
+              "width": 1840,
+              "height": 747,
+              "relativeLeft": 0,
+              "relativeTop": 544,
+              "relativeRight": 101,
+              "relativeBottom": 0,
+              "percentageLeft": 0,
+              "percentageRight": 5.2,
+              "percentageTop": 45.1,
+              "percentageBottom": 0,
+              "percentageHeight": 61.94,
+              "percentageWidth": 94.79,
+              "fileWeight": 1840,
+              "fileHeight": 654
+            },
+            "typename": "ArtLayer",
+            "width": 1840,
+            "height": 747,
+            "kind": "SMARTOBJECT",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1790.png"
+          }, {
+            "id": 1779,
+            "name": "天空",
             "itemIndex": 3,
             "opacity": 100,
             "visible": true,
             "bounds": {
-              "left": 1464,
+              "left": 1386,
               "top": 0,
-              "right": 3053,
-              "bottom": 750,
-              "width": 1589,
-              "height": 750,
-              "relativeLeft": 0,
+              "right": 3259,
+              "bottom": 1278,
+              "width": 1873,
+              "height": 1206,
+              "relativeLeft": 68,
               "relativeTop": 0,
               "relativeRight": 0,
-              "relativeBottom": 25,
-              "percentageLeft": 0,
+              "relativeBottom": 13,
+              "percentageLeft": 3.5,
               "percentageRight": 0,
               "percentageTop": 0,
-              "percentageBottom": 3.33,
+              "percentageBottom": 1.07,
               "percentageHeight": 100,
-              "percentageWidth": 100,
-              "fileWeight": 1589,
-              "fileHeight": 750
+              "percentageWidth": 96.49,
+              "fileWeight": 1860,
+              "fileHeight": 703
             },
             "typename": "ArtLayer",
-            "width": 1589,
-            "height": 750,
+            "width": 1873,
+            "height": 1206,
             "kind": "NORMAL",
             "isBackgroundLayer": false,
-            "fileName": "./static/resource/1398.png"
+            "fileName": "./static/resource/1779.png"
           }];
           var chaoxian = this.creatMode(temp, 'chaoxian');
+          setTimeout(function () {
+            chaoxian.position.set(-1202, 300, -2405);
+            tl.to(chaoxian.position, 3, {
+              y: 350,
+              z: -625
+            }, 0);
+          }, 1000);
           console.log(chaoxian);
           break;
 
@@ -488,6 +609,7 @@ owo.script = {
 
     <script src="./static/js/autoScale.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="http://rmfp.people.com.cn/img/MAIN/2020/08/120400/static/js/three.min.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="./static/js/particle.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="./static/js/main.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="http://tools.people.com.cn/libs/jquery/1.11.1/jquery-1.11.1.min.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="http://rmfp.people.com.cn/img/MAIN/2020/08/120400/static/js/TweenMax.js" type="text/javascript"  charset="UTF-8"></script>

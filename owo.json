@@ -83,6 +83,10 @@
 			"src": "http://rmfp.people.com.cn/img/MAIN/2020/08/120400/static/js/three.min.js"
 		},
 		{
+			"name": "particle",
+			"src": "./src/particle.js"
+		},
+		{
 			"name": "main",
 			"src": "./src/main.js",
 			"resource": true

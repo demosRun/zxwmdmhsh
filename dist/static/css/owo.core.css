@@ -123,6 +123,11 @@ li {
   100%{transform:scale(1);}
 }
 
+.page-1 .home {
+  background-image: url(../resource/bg.jpg);
+  background-size: cover;
+}
+
 .page-1 .so-0 {
   left: 0px;
   top: 0px;
@@ -196,8 +201,8 @@ li {
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 200px;
-  height: 100px;
+  width: 231px;
+  height: 125px;
   background-color: #ccc;
   z-index: 99;
 }
@@ -211,5 +216,28 @@ li {
   color: white;
   padding: 5px;
   margin: 5px 5px;
+  display: inline-block;
+}
+
+.page-1 .scale-box {
+  transition: opacity 2s;
+}
+
+.page-1 canvas {
+  transform-origin: center;
+  position: absolute;
+}
+
+.page-1 #c1 {
+  width: 749px;
+  height: 231px;
+  position: absolute;
+  left: 393px;
+  top: 198px;
+  z-index: 99;
+}
+
+.page-1 .so-2 {
+  opacity: 0;
 }
 
