@@ -32,7 +32,7 @@
     <!-- 页面[loading]-->
     <div class="loading-box page" template="loading" style="display: none;"><img class="loading" src="https://cunchu.site/ozzx/resource/loadingLogo.png"><div class="loading-bar"><div class="num-bar"></div></div><span class="text">Loading</span><div class="num">0%</div></div>
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: none;"><div id="container"></div><div class="scale-box"><div class="so so-0"><canvas id="c1"></canvas><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"><img class="so so-8" src="./static/resource/1631.png"></div></div></div></div>
+    <div class="page-1 page" template="page1" style="display: none;"><div id="container"></div><div class="scale-box" o-tap="next"><div class="so so-0"><canvas id="c1"></canvas><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"></div><div class="so so-gaotie-0"><img class="so so-gaotie-1" src="./static/resource/91.png"><img class="so so-gaotie-2" src="./static/resource/90.png"></div></div></div><div class="video-box"><img class="close-video" src="./static/resource/close.svg" o-tap="skip"><video src=""></video></div></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
@@ -168,13 +168,22 @@ owo.script = {
       "nmMusic": null,
       "videoIsPlay": false,
       "nameIsShow": false,
-      "dataGroup": []
+      "dataGroup": [],
+      "videoPlaying": false,
+      "videoSrc": ""
     },
     "created": function created() {
+      var _this2 = this;
+
       this.init();
       setTimeout(function () {
         update();
       }, 100);
+      this.query('.video-box video').addEventListener('ended', function () {
+        _this2.skip();
+      });
+      this.query('.so-gaotie-1').style.left = '-611px';
+      this.query('.so-gaotie-1').style.top = '201px';
     },
     "init": function init() {
       var container = document.getElementById('container'); // 设立相机
@@ -184,7 +193,7 @@ owo.script = {
       camera.lookAt(0, 0, 0); // 建立一个场景
 
       scene = new THREE.Scene();
-      scene.fog = new THREE.Fog(0xffffff, 100, 300000); // 像素级的渲染，渲染效果更好
+      scene.fog = new THREE.Fog(0xffffff, 300, 1800); // 像素级的渲染，渲染效果更好
 
       renderer = new THREE.WebGLRenderer({
         // antialias: true,
@@ -221,7 +230,7 @@ owo.script = {
 
     },
     "creatMode": function creatMode(infoData, groupName) {
-      var _this2 = this;
+      var _this3 = this;
 
       // 辅助参考线
       // var grid = new THREE.GridHelper(500, 100);
@@ -257,8 +266,8 @@ owo.script = {
           logo.position.set(objL, -objT, bounds.index || 0);
           group.add(logo);
 
-          if (element.name.startsWith('文字-')) {
-            _this2.data.clickObjects.push(logo);
+          if (element.name.startsWith('click-')) {
+            _this3.data.clickObjects.push(logo);
           }
         });
       });
@@ -282,11 +291,19 @@ owo.script = {
       }
     },
     "play": function play(ind) {
+      var _this4 = this;
+
       this.data.step++;
       this.$el.classList.add('play');
 
       switch (this.data.step) {
         case 1:
+          if (window.innerWidth / window.innerHeight > 1) {
+            this.query('.scale-box').style.left = -window.innerWidth * 1.2 + 'px';
+          } else {
+            this.query('.scale-box').style.top = -window.innerHeight * 1.2 + 'px';
+          }
+
           var tl = new TimelineMax();
           tl.to(this.data.dataGroup['main'].position, 2, {
             x: -165,
@@ -328,7 +345,7 @@ owo.script = {
             "fileName": "./static/resource/1658.png"
           }, {
             "id": 109,
-            "name": "鼓",
+            "name": "click鼓",
             "itemIndex": 10,
             "opacity": 100,
             "visible": true,
@@ -535,7 +552,7 @@ owo.script = {
               "right": 3158,
               "bottom": 1291,
               "width": 1840,
-              "height": 747,
+              "height": 654,
               "relativeLeft": 0,
               "relativeTop": 544,
               "relativeRight": 101,
@@ -591,17 +608,59 @@ owo.script = {
           var chaoxian = this.creatMode(temp, 'chaoxian');
           setTimeout(function () {
             chaoxian.position.set(-1202, 300, -2405);
+            chaoxian.rotation.z = 0.2;
+            tl.to(chaoxian.rotation, 3, {
+              z: 0
+            }, 0);
             tl.to(chaoxian.position, 3, {
               y: 350,
               z: -625
-            }, 0);
-          }, 1000);
+            }, 0); // 循环往复的动画
+
+            setTimeout(function () {
+              var tm = new TimelineMax({
+                repeat: -1,
+                yoyo: true,
+                repeatDelay: 0
+              });
+              tm.to(scene.getObjectByName('花').position, 6, {
+                y: -385
+              });
+              _this4.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4';
+            }, 1000);
+          }, 100);
           console.log(chaoxian);
           break;
 
         default:
           break;
       }
+    },
+    "next": function next() {
+      var _this5 = this;
+
+      if (!this.data.videoSrc) {
+        return;
+      }
+
+      console.log('播放视频!');
+      this.query('.video-box video').src = this.data.videoSrc;
+      this.query('.video-box').classList.add('play');
+      setTimeout(function () {
+        _this5.data.videoPlaying = true;
+
+        _this5.query('.video-box video').play();
+      }, 1000);
+    },
+    "skip": function skip() {
+      var _this6 = this;
+
+      this.query('.video-box').classList.remove('play');
+      setTimeout(function () {
+        _this6.data.videoPlaying = false;
+
+        _this6.query('.video-box video').pause();
+      }, 1000);
     }
   }
 };

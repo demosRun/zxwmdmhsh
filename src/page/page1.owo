@@ -10,11 +10,13 @@
   //-   span(o-tap="changeValue('position', 'x', 1)") 右
   //-   span(o-tap="changeValue('position', 'z', -1)") 前
   //-   span(o-tap="changeValue('position', 'z', 1)") 后
+  //-   span(o-tap="changeValue('rotation', 'z', 0.1)") 左翻
+  //-   span(o-tap="changeValue('rotation', 'z', -0.1)") 右翻
   //-   span(o-tap="changeValue('rotation', 'y', 0.1)") 左转
   //-   span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
   //-   span(o-tap="changeValue('rotation', 'x', 0.1)") 抬头
   //-   span(o-tap="changeValue('rotation', 'x', -0.1)") 低头
-  .scale-box
+  .scale-box(o-tap="next")
     .so.so-0
       canvas#c1
       img.so.so-1(src="@|1338.png|")
@@ -23,7 +25,14 @@
       img.so.so-5(src="@|1633.png|")
       .so.so-6
         img.so.so-7(src="@|1630.png|")
-        img.so.so-8(src="@|1631.png|")
+        //- img.so.so-8(src="@|1631.png|")
+      .so.so-gaotie-0
+        img.so.so-gaotie-1(src="@|91.png|")
+        img.so.so-gaotie-2(src="@|90.png|")
+      
+  .video-box
+    img.close-video(src="@|close.svg|" o-tap="skip")
+    video(src="")
 </template>
 
 <script>
@@ -45,14 +54,20 @@
       nmMusic: null,
       videoIsPlay: false,
       nameIsShow: false,
-      dataGroup: []
+      dataGroup: [],
+      videoPlaying: false,
+      videoSrc: ''
     },
     created: function () {
       this.init()
       setTimeout(() => {
         update();
       }, 100);
-      
+      this.query('.video-box video').addEventListener('ended',() => {
+        this.skip()
+      })
+      this.query('.so-gaotie-1').style.left = '-611px'
+      this.query('.so-gaotie-1').style.top = '201px'
     },
     init: function () {
       var container = document.getElementById('container');
@@ -62,7 +77,7 @@
       camera.lookAt(0, 0, 0)
       // 建立一个场景
       scene = new THREE.Scene();
-      scene.fog = new THREE.Fog( 0xffffff, 100, 300000)
+      scene.fog = new THREE.Fog( 0xffffff, 300, 1800)
       // 像素级的渲染，渲染效果更好
       renderer = new THREE.WebGLRenderer({
         // antialias: true,
@@ -135,7 +150,7 @@
           
           logo.position.set(objL, -objT, bounds.index || 0);
           group.add(logo)
-          if (element.name.startsWith('文字-')) {
+          if (element.name.startsWith('click-')) {
             this.data.clickObjects.push(logo)
           }
         })
@@ -166,6 +181,11 @@
       this.$el.classList.add('play')
       switch (this.data.step) {
         case 1:
+          if (window.innerWidth / window.innerHeight > 1) {
+            this.query('.scale-box').style.left = -window.innerWidth * 1.2 + 'px'
+          } else {
+            this.query('.scale-box').style.top = -window.innerHeight * 1.2 + 'px'
+          }
           var tl = new TimelineMax()
           tl.to(this.data.dataGroup['main'].position, 2, {
             x: -165,
@@ -174,30 +194,65 @@
           }, 0)
           const temp = [
             {"id":1658,"name":"人物","itemIndex":11,"opacity":100,"visible":true,"bounds":{"left":1558,"top":602,"index": 100,"right":2513,"bottom":960,"width":455,"height":258,"relativeLeft":740,"relativeTop":702,"relativeRight":746,"relativeBottom":331,"percentageLeft":38.12,"percentageRight":38.43,"percentageTop":58.2,"percentageBottom":27.44,"percentageHeight":21.39,"percentageWidth":23.44,"fileWeight":455,"fileHeight":243},"typename":"ArtLayer","width":455,"height":258,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1658.png|"},
-            {"id":109,"name":"鼓","itemIndex":10,"opacity":100,"visible":true,"bounds":{"left":1348,"top":651,"index": 100,"right":2192,"bottom":901,"width":134,"height":70,"relativeLeft":740,"relativeTop":831,"relativeRight":1067,"relativeBottom":390,"percentageLeft":38.12,"percentageRight":54.97,"percentageTop":68.9,"percentageBottom":32.33,"percentageHeight":5.8,"percentageWidth":6.9,"fileWeight":134,"fileHeight":70},"typename":"ArtLayer","width":134,"height":70,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|109.png|"},
+            {"id":109,"name":"click鼓","itemIndex":10,"opacity":100,"visible":true,"bounds":{"left":1348,"top":651,"index": 100,"right":2192,"bottom":901,"width":134,"height":70,"relativeLeft":740,"relativeTop":831,"relativeRight":1067,"relativeBottom":390,"percentageLeft":38.12,"percentageRight":54.97,"percentageTop":68.9,"percentageBottom":32.33,"percentageHeight":5.8,"percentageWidth":6.9,"fileWeight":134,"fileHeight":70},"typename":"ArtLayer","width":134,"height":70,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|109.png|"},
             {"id":17,"name":"树","itemIndex":9,"opacity":100,"visible":true,"bounds":{"left":1013,"top":517,"index": 100,"right":2093,"bottom":972,"width":408,"height":434,"relativeLeft":367,"relativeTop":538,"relativeRight":1166,"relativeBottom":319,"percentageLeft":18.9,"percentageRight":60.07,"percentageTop":44.61,"percentageBottom":26.45,"percentageHeight":35.98,"percentageWidth":21.02,"fileWeight":408,"fileHeight":434},"typename":"ArtLayer","width":408,"height":434,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|17.png|"},
             {"id":11,"name":"朝鲜族","itemIndex":8,"opacity":100,"visible":true,"bounds":{"left":1483,"top":487,"index": 90,"right":2755,"bottom":817,"width":822,"height":250,"relativeLeft":615,"relativeTop":567,"relativeRight":504,"relativeBottom":474,"percentageLeft":31.68,"percentageRight":25.96,"percentageTop":47.01,"percentageBottom":39.3,"percentageHeight":20.72,"percentageWidth":42.34,"fileWeight":817,"fileHeight":249},"typename":"ArtLayer","width":822,"height":250,"kind":"SMARTOBJECT","isBackgroundLayer":false,"fileName":"@|11.png|"},
             {"id":14,"name":"花","itemIndex":7,"opacity":100,"visible":true,"bounds":{"left":1569,"top":351,"index": 10,"right":2556,"bottom":677,"width":287,"height":226,"relativeLeft":951,"relativeTop":451,"relativeRight":703,"relativeBottom":614,"percentageLeft":48.99,"percentageRight":36.21,"percentageTop":37.39,"percentageBottom":50.91,"percentageHeight":18.73,"percentageWidth":14.78,"fileWeight":283,"fileHeight":226},"typename":"ArtLayer","width":287,"height":226,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|14.png|"},
             {"id":1788,"name":"房子","itemIndex":6,"opacity":100,"visible":true,"bounds":{"left":1338,"top":438,"index":100,"right":2945,"bottom":700,"width":1506,"height":162,"relativeLeft":121,"relativeTop":538,"relativeRight":314,"relativeBottom":591,"percentageLeft":6.23,"percentageRight":16.17,"percentageTop":44.61,"percentageBottom":49,"percentageHeight":13.43,"percentageWidth":77.58,"fileWeight":1505,"fileHeight":162},"typename":"ArtLayer","width":1506,"height":162,"kind":"SMARTOBJECT","isBackgroundLayer":false,"fileName":"@|1788.png|"},
             {"id":1765,"name":"山 拷贝","itemIndex":5,"opacity":100,"visible":true,"bounds":{"left":1487,"top":335,"right":3018,"bottom":695,"width":1531,"height":360,"relativeLeft":169,"relativeTop":335,"relativeRight":241,"relativeBottom":596,"percentageLeft":8.7,"percentageRight":12.41,"percentageTop":27.77,"percentageBottom":49.41,"percentageHeight":29.85,"percentageWidth":78.87,"fileWeight":1531,"fileHeight":359},"typename":"ArtLayer","width":1531,"height":360,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1765.png|"},
-            {"id":1790,"name":"路 拷贝 2","itemIndex":4,"opacity":100,"visible":true,"bounds":{"left":1318,"top":544,"right":3158,"bottom":1291,"width":1840,"height":747,"relativeLeft":0,"relativeTop":544,"relativeRight":101,"relativeBottom":0,"percentageLeft":0,"percentageRight":5.2,"percentageTop":45.1,"percentageBottom":0,"percentageHeight":61.94,"percentageWidth":94.79,"fileWeight":1840,"fileHeight":654},"typename":"ArtLayer","width":1840,"height":747,"kind":"SMARTOBJECT","isBackgroundLayer":false,"fileName":"@|1790.png|"},
+            {"id":1790,"name":"路 拷贝 2","itemIndex":4,"opacity":100,"visible":true,"bounds":{"left":1318,"top":544,"right":3158,"bottom":1291,"width":1840,"height":654,"relativeLeft":0,"relativeTop":544,"relativeRight":101,"relativeBottom":0,"percentageLeft":0,"percentageRight":5.2,"percentageTop":45.1,"percentageBottom":0,"percentageHeight":61.94,"percentageWidth":94.79,"fileWeight":1840,"fileHeight":654},"typename":"ArtLayer","width":1840,"height":747,"kind":"SMARTOBJECT","isBackgroundLayer":false,"fileName":"@|1790.png|"},
             {"id":1779,"name":"天空","itemIndex":3,"opacity":100,"visible":true,"bounds":{"left":1386,"top":0,"right":3259,"bottom":1278,"width":1873,"height":1206,"relativeLeft":68,"relativeTop":0,"relativeRight":0,"relativeBottom":13,"percentageLeft":3.5,"percentageRight":0,"percentageTop":0,"percentageBottom":1.07,"percentageHeight":100,"percentageWidth":96.49,"fileWeight":1860,"fileHeight":703},"typename":"ArtLayer","width":1873,"height":1206,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1779.png|"}
           ]
           const chaoxian = this.creatMode(temp, 'chaoxian')
           setTimeout(() => {
             chaoxian.position.set(-1202, 300, -2405)
+            chaoxian.rotation.z = 0.2
+            tl.to(chaoxian.rotation, 3, {
+              z: 0
+            }, 0)
             tl.to(chaoxian.position, 3, {
               y: 350,
               z: -625,
             }, 0)
-          }, 1000);
-          
+            // 循环往复的动画
+            setTimeout(() => {
+              var tm = new TimelineMax({
+                repeat: -1,
+                yoyo: true,
+                repeatDelay: 0
+              });
+              tm.to(scene.getObjectByName('花').position, 6, {
+                y: -385
+              });
+              this.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4'
+            }, 1000);
+            
+          }, 100);
           console.log(chaoxian)
           break;
       
         default:
           break;
       }
+    },
+    next: function () {
+      if (!this.data.videoSrc) {
+        return
+      }
+      console.log('播放视频!')
+      this.query('.video-box video').src = this.data.videoSrc
+      this.query('.video-box').classList.add('play')
+      setTimeout(() => {
+        this.data.videoPlaying = true
+        this.query('.video-box video').play()
+      }, 1000);
+    },
+    skip: function () {
+      this.query('.video-box').classList.remove('play')
+      setTimeout(() => {
+        this.data.videoPlaying = false
+        this.query('.video-box video').pause()
+      }, 1000);
     }
   }
 </script>
@@ -226,9 +281,9 @@
   z-index: -2;
 }
 .so-3 {
-  left: 1183px;
+  left: 1151px;
   top: 344px;
-  z-index: -3;
+  z-index: 6;
 }
 .so-4 {
   left: 0px;
@@ -236,9 +291,8 @@
   z-index: -4;
 }
 .so-5 {
-  left: 44px;
-  top: 135px;
-  z-index: -5;
+  left: -27px;
+  top: -431px;
 }
 .so-6 {
   left: 0px;
@@ -286,7 +340,7 @@
   }
 }
 .scale-box {
-  transition: opacity 2s;
+  transition: left 1s, top 1s;
   // display: none;
 }
 canvas {
@@ -303,5 +357,63 @@ canvas {
 }
 .so-2 {
   opacity: 0;
+}
+.video-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 50px;
+  transition: all 1s;
+  opacity: 0;
+  background-color: black;
+  pointer-events: none;
+  video {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+.play {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  opacity: 1;
+  display: block;
+  pointer-events: all;
+}
+.close-video {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 99;
+}
+.so-gaotie-0 {
+  left: 0px;
+  top: 463px;
+  width: 1620px;
+  height: 388px;
+  z-index: 0;
+}
+.so-gaotie-1 {
+  left: 810px;
+  top: 0px;
+  z-index: -1;
+  transition: all 1.5s;
+}
+.so-gaotie-2 {
+  left: 0px;
+  top: 81px;
+  z-index: -2;
 }
 </style>

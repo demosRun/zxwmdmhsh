@@ -149,9 +149,9 @@ li {
 }
 
 .page-1 .so-3 {
-  left: 1183px;
+  left: 1151px;
   top: 344px;
-  z-index: -3;
+  z-index: 6;
 }
 
 .page-1 .so-4 {
@@ -161,9 +161,8 @@ li {
 }
 
 .page-1 .so-5 {
-  left: 44px;
-  top: 135px;
-  z-index: -5;
+  left: -27px;
+  top: -431px;
 }
 
 .page-1 .so-6 {
@@ -220,7 +219,7 @@ li {
 }
 
 .page-1 .scale-box {
-  transition: opacity 2s;
+  transition: left 1s, top 1s;
 }
 
 .page-1 canvas {
@@ -239,5 +238,70 @@ li {
 
 .page-1 .so-2 {
   opacity: 0;
+}
+
+.page-1 .video-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 50px;
+  transition: all 1s;
+  opacity: 0;
+  background-color: black;
+  pointer-events: none;
+}
+
+.page-1 .video-box video {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.page-1 .play {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  opacity: 1;
+  display: block;
+  pointer-events: all;
+}
+
+.page-1 .close-video {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 99;
+}
+
+.page-1 .so-gaotie-0 {
+  left: 0px;
+  top: 463px;
+  width: 1620px;
+  height: 388px;
+  z-index: 0;
+}
+
+.page-1 .so-gaotie-1 {
+  left: 810px;
+  top: 0px;
+  z-index: -1;
+  transition: all 1.5s;
+}
+
+.page-1 .so-gaotie-2 {
+  left: 0px;
+  top: 81px;
+  z-index: -2;
 }
 

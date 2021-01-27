@@ -1,9 +1,9 @@
-var imageWidth = 749
-var imageHeight = 231
+var imageWidth = 705
+var imageHeight = 218
 // 粒子持续时间
-var findTime = 8
+var findTime = 10
 var deviation = 110
-var countPointsPerFrame = 4400;
+var countPointsPerFrame = 2000;
 
 var needUpdata = true
 var Particle = {

@@ -62,5 +62,5 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 }
 
 .play .scale-box {
-  opacity: 0;
+  /* top: -500px; */
 }
