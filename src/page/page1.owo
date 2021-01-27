@@ -1,6 +1,6 @@
 <template lang="pug">
 .page-1
-  #container
+  #container(o-tap="next")
   //- .conn-box
   //-   input(type="text" o-value="this.data.inputValue")
   //-   input(type="number" o-value="this.data.beishu")
@@ -16,7 +16,7 @@
   //-   span(o-tap="changeValue('rotation', 'y', -0.1)") 右转
   //-   span(o-tap="changeValue('rotation', 'x', 0.1)") 抬头
   //-   span(o-tap="changeValue('rotation', 'x', -0.1)") 低头
-  .scale-box(o-tap="next")
+  .scale-box
     .so.so-0
       canvas#c1
       img.so.so-1(src="@|1338.png|")
@@ -66,8 +66,8 @@
       this.query('.video-box video').addEventListener('ended',() => {
         this.skip()
       })
-      this.query('.so-gaotie-1').style.left = '-611px'
-      this.query('.so-gaotie-1').style.top = '201px'
+      this.query('.so-gaotie-1').style.left = '-651px'
+      this.query('.so-gaotie-1').style.top = '208px'
     },
     init: function () {
       var container = document.getElementById('container');
@@ -224,9 +224,9 @@
               tm.to(scene.getObjectByName('花').position, 6, {
                 y: -385
               });
-              this.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4'
+              
             }, 1000);
-            
+            this.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4'
           }, 100);
           console.log(chaoxian)
           break;
@@ -236,6 +236,7 @@
       }
     },
     next: function () {
+      console.log(this.data.videoSrc)
       if (!this.data.videoSrc) {
         return
       }
