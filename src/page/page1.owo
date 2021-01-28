@@ -330,10 +330,12 @@
       this.query('.video-box').classList.add('play')
       setTimeout(() => {
         this.data.videoPlaying = true
+        owo.script.music.pause()
         this.query('.video-box video').play()
       }, 1000);
     },
     skip: function () {
+      owo.script.music.play()
       this.query('.video-box').classList.remove('play')
       setTimeout(() => {
         this.data.videoPlaying = false
@@ -465,6 +467,7 @@ canvas {
   opacity: 0;
   background-color: black;
   pointer-events: none;
+  z-index: 999;
   video {
     width: 100vw;
     height: 100vh;

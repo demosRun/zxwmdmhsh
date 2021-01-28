@@ -33,6 +33,8 @@
     <div class="loading-box page" template="loading" style="display: none;"><div class="scale-box"><img class="loading" src="./static/resource/loading-logo.png"><img class="shanshui" src="./static/resource/shan-loading.png"><div class="loading-bar"><div class="num-bar"></div></div><div class="num">0%</div></div></div>
     <!-- 页面[page1]-->
     <div class="page-1 page" template="page1" style="display: none;"><div id="container" o-tap="next"></div><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'z', 0.1)">左翻</span><span o-tap="changeValue('rotation', 'z', -0.1)">右翻</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div><div class="scale-box scale-box-1"><div class="so so-0"><canvas id="c1"></canvas><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"></div><div class="so so-gaotie-0"><img class="so so-gaotie-1" src="./static/resource/91.png"><img class="so so-gaotie-2" src="./static/resource/90.png"></div></div></div><div class="scale-box blinker-box scale-box"><div class="so so-heka-0"><img class="so so-heka-1" src="./static/resource/319.png"><img class="so so-heka-2" src="./static/resource/173.png"><img class="so so-heka-3" src="./static/resource/143.png"><div class="so so-heka-4"><img class="so so-heka-5" src="./static/resource/133.png"><img class="so so-heka-6" src="./static/resource/132.png"><img class="so so-heka-7" src="./static/resource/131.png"><img class="so so-heka-8" src="./static/resource/130.png"><img class="so so-heka-9" src="./static/resource/129.png"></div><img class="so so-heka-10" src="./static/resource/108.png"></div></div><div class="video-box"><img class="close-video" src="./static/resource/close.svg" o-tap="skip"><video object-fill="cover" src=""></video></div><img class="hand" src="./static/resource/hand.png" o-animation="flicker"></div>
+    <!-- 插件[music]-->
+    <div class="music-menu owo-block" template="music" style="display: none;"><img class="music-icon" src="https://cunchu.site/ozzx/resource/music.png" o-tap="switchPlay"></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
@@ -105,7 +107,12 @@ infoData = [{
   "isBackgroundLayer": false,
   "fileName": "./static/resource/1635.png"
 } // 朝鲜族
-];
+]; // 模块 music 的script代码
+// 微信自动播放音乐
+
+document.addEventListener("WeixinJSBridgeReady", function () {
+  owo.script.music.play();
+}, false);
 owo.script = {
   "loading": {
     "data": {
@@ -948,6 +955,7 @@ owo.script = {
       this.query('.video-box').classList.add('play');
       setTimeout(function () {
         _this5.data.videoPlaying = true;
+        owo.script.music.pause();
 
         _this5.query('.video-box video').play();
       }, 1000);
@@ -955,6 +963,7 @@ owo.script = {
     "skip": function skip() {
       var _this6 = this;
 
+      owo.script.music.play();
       this.query('.video-box').classList.remove('play');
       setTimeout(function () {
         _this6.data.videoPlaying = false;
@@ -967,6 +976,38 @@ owo.script = {
       setTimeout(function () {
         _this6.step();
       }, 1000);
+    }
+  },
+  "music": {
+    "data": {
+      "music": null,
+      "musicIsPlay": false
+    },
+    "switchPlay": function switchPlay() {
+      this.data.musicIsPlay ? this.pause() : this.play();
+    },
+    "play": function play() {
+      console.log('播放音乐');
+
+      if (!this.data.musicIsPlay) {
+        this.data.musicIsPlay = true;
+        this.data.music = new Audio("https://cunchu.site/ozzx/resource/bg.mp3");
+        this.data.music.volume = 0.2;
+        this.data.music.loop = true;
+        this.data.music.play();
+        var icon = document.getElementsByClassName('music-icon')[0];
+        icon.src = 'https://cunchu.site/ozzx/resource/music.png';
+        icon.classList.add('active');
+      }
+    },
+    "pause": function pause() {
+      if (this.data.musicIsPlay) {
+        this.data.musicIsPlay = false;
+        this.data.music.pause();
+        var icon = document.getElementsByClassName('music-icon')[0];
+        icon.src = 'https://cunchu.site/ozzx/resource/music.png';
+        icon.classList.remove('active');
+      }
     }
   }
 };

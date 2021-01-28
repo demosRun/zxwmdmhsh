@@ -117,6 +117,11 @@
 			"name": "page1",
 			"src": "./src/page/page1.owo",
 			"type": "page"
+		},
+		{
+			"name": "music",
+			"src": "https://template.owo.ink/bc59e31ef893b3fd.owo",
+			"type": "block"
 		}
 	],
 	"mode": {

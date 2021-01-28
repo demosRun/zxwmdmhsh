@@ -288,6 +288,7 @@ li {
   opacity: 0;
   background-color: black;
   pointer-events: none;
+  z-index: 999;
 }
 
 .page-1 .video-box video {
@@ -426,5 +427,67 @@ li {
           user-select: none;
   pointer-events: none;
   display: none;
+}
+.music-menu {
+  position: absolute;
+  right: 10px;
+  top: 10%;
+  z-index: 9;
+  width: 35px;
+  height: 35px;
+}
+
+.music-menu .music-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.music-menu .active {
+  -webkit-animation: musicturn 12s linear infinite;
+          animation: musicturn 12s linear infinite;
+}
+
+@-webkit-keyframes musicturn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes musicturn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
