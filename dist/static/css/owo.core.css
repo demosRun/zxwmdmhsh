@@ -57,36 +57,36 @@ li {
 .loading-box {
   width: 100%;
   height: 100%;
-  background-image: url('https://cunchu.site/ozzx/resource/lanse.jpg');
+  background-color: #f7fefc;
 }
 
 .loading-box .loading {
   position: absolute;
   left: 0;
   right: 0;
-  top: -16%;
+  top: -59%;
   bottom: 0;
   margin: auto;
 }
 
 .loading-box .loading-bar {
   position: absolute;
-  top: 0%;
+  top: 25%;
   bottom: 0%;
-  height: 20px;
+  height: 15px;
   background-color: white;
-  width: 80%;
+  width: 45%;
   margin: auto;
   left: 0;
   right: 0;
   border-radius: 20px;
-  padding: 10px;
+  padding: 2px;
   box-shadow: 2px 3px 9px #5d739c;
 }
 
 .loading-box .num-bar {
-  background-color: #e47d6e;
-  height: 20px;
+  background-color: #84a09b;
+  height: 15px;
   border-radius: 20px;
   width: 0%;
   transition: width 0.5s;
@@ -96,19 +96,27 @@ li {
 .loading-box .text {
   position: absolute;
   top: 0%;
-  bottom: -8%;
+  bottom: -43%;
   margin: auto;
   line-height: 50px;
   height: 50px;
   font-size: 36px;
   width: 100%;
   text-align: center;
-  color: white;
+  color: #666;
   font-weight: bold;
 }
 
 .loading-box .text {
   bottom: -14%;
+}
+
+.loading-box .shanshui {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 21%;
 }
 [o-animation="shrink"] {
   -webkit-animation: shrink 1s linear alternate infinite;
@@ -121,6 +129,31 @@ li {
 @keyframes shrink{
   0%{transform:scale(0.9);}
   100%{transform:scale(1);}
+}
+
+@-webkit-keyframes flicker {
+  from {
+    opacity: 100%;
+  }
+
+  to {
+    opacity: 20%;
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 100%;
+  }
+
+  to {
+    opacity: 20%;
+  }
+}
+
+[o-animation="flicker"] {
+  -webkit-animation: flicker 2s linear 0s infinite alternate;
+  animation: flicker 2s linear 0s infinite alternate;
 }
 
 .page-1 .home {
@@ -293,15 +326,105 @@ li {
 }
 
 .page-1 .so-gaotie-1 {
-  left: 810px;
-  top: 0px;
+  left: 1189px;
+  top: -88px;
   z-index: -1;
-  transition: all 1.5s;
+  transition: all 5.5s;
 }
 
 .page-1 .so-gaotie-2 {
   left: 0px;
   top: 81px;
   z-index: -2;
+}
+
+.page-1 .so-heka-0 {
+  left: 23px;
+  top: 19px;
+  width: 1462px;
+  height: 712px;
+  z-index: 0;
+}
+
+.page-1 .so-heka-1 {
+  left: 153px;
+  top: 568px;
+  z-index: -1;
+}
+
+.page-1 .so-heka-2 {
+  left: 1070px;
+  top: 568px;
+  z-index: -2;
+}
+
+.page-1 .so-heka-3 {
+  left: 683px;
+  top: 638px;
+  z-index: -3;
+}
+
+.page-1 .so-heka-4 {
+  left: 91px;
+  top: 78px;
+  width: 1283px;
+  height: 390px;
+  z-index: -4;
+}
+
+.page-1 .so-heka-5 {
+  left: 0px;
+  top: 0px;
+  z-index: -5;
+}
+
+.page-1 .so-heka-6 {
+  left: 1039px;
+  top: 0px;
+  z-index: -6;
+}
+
+.page-1 .so-heka-7 {
+  left: 260px;
+  top: 0px;
+  z-index: -7;
+}
+
+.page-1 .so-heka-8 {
+  left: 521px;
+  top: 0px;
+  z-index: -8;
+}
+
+.page-1 .so-heka-9 {
+  left: 779px;
+  top: 0px;
+  z-index: -9;
+}
+
+.page-1 .so-heka-10 {
+  left: 0px;
+  top: 0px;
+  z-index: -10;
+}
+
+.page-1 .blinker-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -100%;
+}
+
+.page-1 .hand {
+  position: absolute;
+  left: 82%;
+  top: 53%;
+  width: 5%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  display: none;
 }
 

@@ -30,9 +30,9 @@
   <body>
     
     <!-- 页面[loading]-->
-    <div class="loading-box page" template="loading" style="display: none;"><img class="loading" src="https://cunchu.site/ozzx/resource/loadingLogo.png"><div class="loading-bar"><div class="num-bar"></div></div><span class="text">Loading</span><div class="num">0%</div></div>
+    <div class="loading-box page" template="loading" style="display: none;"><div class="scale-box"><img class="loading" src="./static/resource/loading-logo.png"><img class="shanshui" src="./static/resource/shan-loading.png"><div class="loading-bar"><div class="num-bar"></div></div><div class="num">0%</div></div></div>
     <!-- 页面[page1]-->
-    <div class="page-1 page" template="page1" style="display: none;"><div id="container" o-tap="next"></div><div class="scale-box"><div class="so so-0"><canvas id="c1"></canvas><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"></div><div class="so so-gaotie-0"><img class="so so-gaotie-1" src="./static/resource/91.png"><img class="so so-gaotie-2" src="./static/resource/90.png"></div></div></div><div class="video-box"><img class="close-video" src="./static/resource/close.svg" o-tap="skip"><video src=""></video></div></div>
+    <div class="page-1 page" template="page1" style="display: none;"><div id="container" o-tap="next"></div><div class="conn-box"><input type="text" o-value="this.data.inputValue"><input type="number" o-value="this.data.beishu"><span o-tap="changeValue('position', 'y', 1)">上</span><span o-tap="changeValue('position', 'y', -1)">下</span><span o-tap="changeValue('position', 'x', -1)">左</span><span o-tap="changeValue('position', 'x', 1)">右</span><span o-tap="changeValue('position', 'z', -1)">前</span><span o-tap="changeValue('position', 'z', 1)">后</span><span o-tap="changeValue('rotation', 'z', 0.1)">左翻</span><span o-tap="changeValue('rotation', 'z', -0.1)">右翻</span><span o-tap="changeValue('rotation', 'y', 0.1)">左转</span><span o-tap="changeValue('rotation', 'y', -0.1)">右转</span><span o-tap="changeValue('rotation', 'x', 0.1)">抬头</span><span o-tap="changeValue('rotation', 'x', -0.1)">低头</span></div><div class="scale-box scale-box-1"><div class="so so-0"><canvas id="c1"></canvas><img class="so so-1" src="./static/resource/1338.png"><img class="so so-2" src="./static/resource/625.png"><img class="so so-3" src="./static/resource/660.png" o-animation="shrink" o-tap="play"><img class="so so-5" src="./static/resource/1633.png"><div class="so so-6"><img class="so so-7" src="./static/resource/1630.png"></div><div class="so so-gaotie-0"><img class="so so-gaotie-1" src="./static/resource/91.png"><img class="so so-gaotie-2" src="./static/resource/90.png"></div></div></div><div class="scale-box blinker-box scale-box"><div class="so so-heka-0"><img class="so so-heka-1" src="./static/resource/319.png"><img class="so so-heka-2" src="./static/resource/173.png"><img class="so so-heka-3" src="./static/resource/143.png"><div class="so so-heka-4"><img class="so so-heka-5" src="./static/resource/133.png"><img class="so so-heka-6" src="./static/resource/132.png"><img class="so so-heka-7" src="./static/resource/131.png"><img class="so so-heka-8" src="./static/resource/130.png"><img class="so so-heka-9" src="./static/resource/129.png"></div><img class="so so-heka-10" src="./static/resource/108.png"></div></div><div class="video-box"><img class="close-video" src="./static/resource/close.svg" o-tap="skip"><video object-fill="cover" src=""></video></div><img class="hand" src="./static/resource/hand.png" o-animation="flicker"></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
@@ -179,6 +179,9 @@ owo.script = {
       setTimeout(function () {
         update();
       }, 100);
+      setTimeout(function () {
+        _this2.query('.hand').style.display = 'block';
+      }, 3000);
       this.query('.video-box video').addEventListener('ended', function () {
         _this2.skip();
       });
@@ -290,20 +293,19 @@ owo.script = {
         });
       }
     },
-    "play": function play(ind) {
+    "step": function step() {
       var _this4 = this;
 
       this.data.step++;
-      this.$el.classList.add('play');
+      this.query('.hand').style.display = 'none';
 
       switch (this.data.step) {
         case 1:
-          if (window.innerWidth / window.innerHeight > 1) {
-            this.query('.scale-box').style.left = -window.innerWidth * 1.2 + 'px';
-          } else {
-            this.query('.scale-box').style.top = -window.innerHeight * 1.2 + 'px';
-          }
-
+          this.query('.hand').style.left = '60%';
+          this.query('.hand').style.top = '82%';
+          setTimeout(function () {
+            _this4.query('.hand').style.display = 'block';
+          }, 4000);
           var tl = new TimelineMax();
           tl.to(this.data.dataGroup['main'].position, 2, {
             x: -165,
@@ -632,9 +634,305 @@ owo.script = {
           console.log(chaoxian);
           break;
 
+        case 2:
+          var tl = new TimelineMax();
+          tl.to(this.data.dataGroup['chaoxian'].position, 2, {
+            x: -1502,
+            y: 550,
+            z: 175
+          }, 0);
+          temp = [{
+            "id": 1659,
+            "name": "蒙古人物",
+            "itemIndex": 20,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 3047,
+              "top": 495,
+              "index": 170,
+              "right": 3963,
+              "bottom": 973,
+              "width": 196,
+              "height": 303,
+              "relativeLeft": 772,
+              "relativeTop": 607,
+              "relativeRight": 722,
+              "relativeBottom": 303,
+              "percentageLeft": 45.68,
+              "percentageRight": 42.72,
+              "percentageTop": 50.33,
+              "percentageBottom": 25.12,
+              "percentageHeight": 25.12,
+              "percentageWidth": 11.59,
+              "fileWeight": 196,
+              "fileHeight": 303
+            },
+            "typename": "ArtLayer",
+            "width": 196,
+            "height": 303,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1659.png"
+          }, {
+            "id": 1489,
+            "name": "黄马",
+            "itemIndex": 19,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 2834,
+              "top": 371,
+              "index": 170,
+              "right": 3632,
+              "bottom": 786,
+              "width": 108,
+              "height": 81,
+              "relativeLeft": 529,
+              "relativeTop": 642,
+              "relativeRight": 1053,
+              "relativeBottom": 490,
+              "percentageLeft": 31.3,
+              "percentageRight": 62.3,
+              "percentageTop": 53.23,
+              "percentageBottom": 40.63,
+              "percentageHeight": 6.71,
+              "percentageWidth": 6.39,
+              "fileWeight": 108,
+              "fileHeight": 81
+            },
+            "typename": "ArtLayer",
+            "width": 108,
+            "height": 81,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1489.png"
+          }, {
+            "id": 1483,
+            "name": "棕马",
+            "itemIndex": 18,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 2869,
+              "top": 371,
+              "index": 160,
+              "right": 3711,
+              "bottom": 797,
+              "width": 182,
+              "height": 126,
+              "relativeLeft": 534,
+              "relativeTop": 608,
+              "relativeRight": 974,
+              "relativeBottom": 479,
+              "percentageLeft": 31.59,
+              "percentageRight": 57.63,
+              "percentageTop": 50.41,
+              "percentageBottom": 39.71,
+              "percentageHeight": 10.44,
+              "percentageWidth": 10.76,
+              "fileWeight": 182,
+              "fileHeight": 109
+            },
+            "typename": "ArtLayer",
+            "width": 182,
+            "height": 126,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1483.png"
+          }, {
+            "id": 1186,
+            "name": "蒙古包",
+            "itemIndex": 17,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 3028,
+              "top": 405,
+              "index": 100,
+              "right": 4432,
+              "bottom": 837,
+              "width": 1204,
+              "height": 192,
+              "relativeLeft": 233,
+              "relativeTop": 582,
+              "relativeRight": 253,
+              "relativeBottom": 439,
+              "percentageLeft": 13.78,
+              "percentageRight": 14.97,
+              "percentageTop": 48.25,
+              "percentageBottom": 36.4,
+              "percentageHeight": 15.92,
+              "percentageWidth": 71.24,
+              "fileWeight": 1204,
+              "fileHeight": 192
+            },
+            "typename": "ArtLayer",
+            "width": 1204,
+            "height": 192,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1186.png"
+          }, {
+            "id": 1636,
+            "name": "羊群",
+            "itemIndex": 16,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 3153,
+              "top": 414,
+              "index": 200,
+              "right": 4037,
+              "bottom": 812,
+              "width": 184,
+              "height": 198,
+              "relativeLeft": 858,
+              "relativeTop": 551,
+              "relativeRight": 648,
+              "relativeBottom": 464,
+              "percentageLeft": 50.76,
+              "percentageRight": 38.34,
+              "percentageTop": 45.68,
+              "percentageBottom": 38.47,
+              "percentageHeight": 16.41,
+              "percentageWidth": 10.88,
+              "fileWeight": 184,
+              "fileHeight": 198
+            },
+            "typename": "ArtLayer",
+            "width": 184,
+            "height": 198,
+            "kind": "SMARTOBJECT",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1636.png"
+          }, {
+            "id": 1754,
+            "name": "草地",
+            "itemIndex": 15,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 3012,
+              "top": 435,
+              "index": 100,
+              "right": 4668,
+              "bottom": 1276,
+              "width": 1656,
+              "height": 841,
+              "relativeLeft": 17,
+              "relativeTop": 372,
+              "relativeRight": 17,
+              "relativeBottom": 0,
+              "percentageLeft": 1,
+              "percentageRight": 1,
+              "percentageTop": 30.84,
+              "percentageBottom": 0,
+              "percentageHeight": 69.73,
+              "percentageWidth": 97.98,
+              "fileWeight": 1656,
+              "fileHeight": 771
+            },
+            "typename": "ArtLayer",
+            "width": 1656,
+            "height": 841,
+            "kind": "SMARTOBJECT",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1754.png"
+          }, {
+            "id": 1751,
+            "name": "天空",
+            "itemIndex": 14,
+            "opacity": 100,
+            "visible": true,
+            "bounds": {
+              "left": 2995,
+              "top": 63,
+              "index": 100,
+              "right": 4685,
+              "bottom": 785,
+              "width": 1690,
+              "height": 722,
+              "relativeLeft": 0,
+              "relativeTop": 0,
+              "relativeRight": 0,
+              "relativeBottom": 491,
+              "percentageLeft": 0,
+              "percentageRight": 0,
+              "percentageTop": 0,
+              "percentageBottom": 40.71,
+              "percentageHeight": 59.86,
+              "percentageWidth": 100,
+              "fileWeight": 1647,
+              "fileHeight": 674
+            },
+            "typename": "ArtLayer",
+            "width": 1690,
+            "height": 722,
+            "kind": "NORMAL",
+            "isBackgroundLayer": false,
+            "fileName": "./static/resource/1751.png"
+          }];
+          var menggu = this.creatMode(temp, 'menggu');
+          setTimeout(function () {
+            menggu.position.set(-3502, 250, -1425); // menggu.rotation.z = -0.2
+            // tl.to(menggu.rotation, 3, {
+            //   z: 0
+            // }, 0)
+
+            tl.to(menggu.position, 3, {
+              x: -2902,
+              y: 310,
+              z: -725
+            }, 0);
+            _this4.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4';
+          }, 800);
+          console.log(menggu);
+          break;
+
+        case 3: // var tl = new TimelineMax()
+        // tl.to(this.data.dataGroup['chaoxian'].position, 2, {x: -1502,y: 550,z: 175}, 0)
+        // temp = [
+        //   {"id":1661,"name":"人物","itemIndex":31,"opacity":100,"visible":true,"bounds":{"left":5504,"top":588,"right":5724,"bottom":920,"width":220,"height":332,"relativeLeft":1057,"relativeTop":588,"relativeRight":796,"relativeBottom":406,"percentageLeft":50.98,"percentageRight":38.39,"percentageTop":48.75,"percentageBottom":33.66,"percentageHeight":27.52,"percentageWidth":10.61,"fileWeight":220,"fileHeight":332},"typename":"ArtLayer","width":220,"height":332,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"1661.png"},
+        //   {"id":1290,"name":"房子","itemIndex":30,"opacity":100,"visible":true,"bounds":{"left":4912,"top":570,"right":5459,"bottom":947,"width":547,"height":377,"relativeLeft":465,"relativeTop":570,"relativeRight":1061,"relativeBottom":379,"percentageLeft":22.43,"percentageRight":51.18,"percentageTop":47.26,"percentageBottom":31.42,"percentageHeight":31.26,"percentageWidth":26.38,"fileWeight":547,"fileHeight":377},"typename":"ArtLayer","width":547,"height":377,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"1290.png"},
+        //   {"id":312,"name":"旗","itemIndex":29,"opacity":100,"visible":true,"bounds":{"left":4447,"top":0,"right":6520,"bottom":491,"width":2073,"height":491,"relativeLeft":0,"relativeTop":0,"relativeRight":0,"relativeBottom":835,"percentageLeft":0,"percentageRight":0,"percentageTop":0,"percentageBottom":69.23,"percentageHeight":40.71,"percentageWidth":100,"fileWeight":2007,"fileHeight":488},"typename":"ArtLayer","width":2073,"height":616,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"312.png"},
+        //   {"id":295,"name":"牦牛","itemIndex":28,"opacity":100,"visible":true,"bounds":{"left":5732,"top":581,"right":6147,"bottom":822,"width":415,"height":241,"relativeLeft":1285,"relativeTop":581,"relativeRight":373,"relativeBottom":504,"percentageLeft":61.98,"percentageRight":17.99,"percentageTop":48.17,"percentageBottom":41.79,"percentageHeight":19.98,"percentageWidth":20.01,"fileWeight":415,"fileHeight":241},"typename":"ArtLayer","width":415,"height":241,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"295.png"},
+        //   {"id":957,"name":"牦牛 拷贝","itemIndex":27,"opacity":100,"visible":true,"bounds":{"left":5901,"top":577,"right":5964,"bottom":602,"width":63,"height":25,"relativeLeft":1454,"relativeTop":577,"relativeRight":556,"relativeBottom":724,"percentageLeft":70.13,"percentageRight":26.82,"percentageTop":47.84,"percentageBottom":60.03,"percentageHeight":2.07,"percentageWidth":3.03,"fileWeight":63,"fileHeight":25},"typename":"ArtLayer","width":63,"height":25,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"957.png"},
+        //   {"id":289,"name":"牦牛","itemIndex":26,"opacity":100,"visible":true,"bounds":{"left":5710,"top":585,"right":6164,"bottom":855,"width":454,"height":270,"relativeLeft":1263,"relativeTop":585,"relativeRight":356,"relativeBottom":471,"percentageLeft":60.92,"percentageRight":17.17,"percentageTop":48.5,"percentageBottom":39.05,"percentageHeight":22.38,"percentageWidth":21.9,"fileWeight":384,"fileHeight":270},"typename":"ArtLayer","width":454,"height":270,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"289.png"},
+        //   {"id":1746,"name":"云","itemIndex":25,"opacity":100,"visible":true,"bounds":{"left":4675,"top":183,"right":6244,"bottom":1075,"width":1569,"height":892,"relativeLeft":228,"relativeTop":183,"relativeRight":276,"relativeBottom":251,"percentageLeft":10.99,"percentageRight":13.31,"percentageTop":15.17,"percentageBottom":20.81,"percentageHeight":73.96,"percentageWidth":75.68,"fileWeight":1569,"fileHeight":892},"typename":"ArtLayer","width":1569,"height":892,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"1746.png"},
+        //   {"id":1749,"name":"雪山","itemIndex":24,"opacity":100,"visible":true,"bounds":{"left":4734,"top":199,"right":6223,"bottom":662,"width":1489,"height":463,"relativeLeft":287,"relativeTop":199,"relativeRight":297,"relativeBottom":664,"percentageLeft":13.84,"percentageRight":14.32,"percentageTop":16.5,"percentageBottom":55.05,"percentageHeight":38.39,"percentageWidth":71.82,"fileWeight":1489,"fileHeight":463},"typename":"ArtLayer","width":1489,"height":463,"kind":"SMARTOBJECT","isBackgroundLayer":false,"fileName":"1749.png"},
+        //   {"id":1750,"name":"背景","itemIndex":23,"opacity":100,"visible":true,"bounds":{"left":4635,"top":0,"right":6329,"bottom":1326,"width":1694,"height":1206,"relativeLeft":188,"relativeTop":0,"relativeRight":191,"relativeBottom":0,"percentageLeft":9.06,"percentageRight":9.21,"percentageTop":0,"percentageBottom":0,"percentageHeight":100,"percentageWidth":81.71,"fileWeight":1693,"fileHeight":1206},"typename":"ArtLayer","width":1694,"height":1206,"kind":"SMARTOBJECT","isBackgroundLayer":false,"fileName":"1750.png"}
+        // ]
+        // const menggu = this.creatMode(temp, 'menggu')
+        // setTimeout(() => {
+        //   menggu.position.set(-3502, 250, -1425)
+        //   // menggu.rotation.z = -0.2
+        //   // tl.to(menggu.rotation, 3, {
+        //   //   z: 0
+        //   // }, 0)
+        //   tl.to(menggu.position, 3, {
+        //     x: -2902,
+        //     y: 310,
+        //     z: -725,
+        //   }, 0)
+        //   this.data.videoSrc = 'http://cunchu.site/people/video/%E6%9D%91.mp4'
+        // }, 800);
+        // console.log(menggu)
+        // break;
+
         default:
           break;
       }
+    },
+    "play": function play(ind) {
+      if (window.innerWidth / window.innerHeight > 1) {
+        this.query('.scale-box-1').style.left = -window.innerWidth * 1.2 + 'px';
+      } else {
+        this.query('.scale-box-1').style.top = -window.innerHeight * 1.2 + 'px';
+      }
+
+      this.$el.classList.add('play');
+      this.step();
     },
     "next": function next() {
       var _this5 = this;
@@ -662,6 +960,12 @@ owo.script = {
         _this6.data.videoPlaying = false;
 
         _this6.query('.video-box video').pause();
+      }, 1000); // setTimeout(() => {
+      //   this.query('.blinker-box').style.top = '0'
+      // }, 800);
+
+      setTimeout(function () {
+        _this6.step();
       }, 1000);
     }
   }
