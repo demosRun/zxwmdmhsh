@@ -1,6 +1,6 @@
 <template lang="pug">
 .music-menu
-  img.music-icon(src="https://cunchu.site/ozzx/resource/music.png" o-tap="switchPlay")
+  img.music-icon(src="@|music.svg|" o-tap="switchPlay")
 </template>
 
 <script>
@@ -25,7 +25,6 @@
         this.data.music.loop = true
         this.data.music.play()
         const icon = document.getElementsByClassName('music-icon')[0]
-        icon.src = 'https://cunchu.site/ozzx/resource/music.png'
         icon.classList.add('active')
       }
     },
@@ -34,7 +33,6 @@
         this.data.musicIsPlay = false
         this.data.music.pause()
         const icon = document.getElementsByClassName('music-icon')[0]
-        icon.src = 'https://cunchu.site/ozzx/resource/music.png'
         icon.classList.remove('active')
       }
     }

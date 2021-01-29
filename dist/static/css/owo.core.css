@@ -345,6 +345,7 @@ li {
   width: 1462px;
   height: 712px;
   z-index: 0;
+  display: none;
 }
 
 .page-1 .so-heka-1 {
@@ -414,12 +415,18 @@ li {
   height: 100%;
   position: absolute;
   top: -100%;
+  z-index: 999;
+  transition: all 0.5s;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .page-1 .hand {
   position: absolute;
-  left: 82%;
-  top: 53%;
+  left: 64%;
+  top: 26%;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   width: 5%;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -427,6 +434,66 @@ li {
           user-select: none;
   pointer-events: none;
   display: none;
+}
+
+.page-1 .ans-card {
+  width: 954px;
+  height: 465px;
+  background-image: url('../resource/ans-card.png');
+}
+
+.page-1 .ans-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.page-1 .ans-card h2 {
+  color: #795a56;
+  font-size: 32px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.page-1 .ans-card h1 {
+  color: #97380f;
+  font-size: 40px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  top: 111px;
+}
+
+.page-1 .ans-card .fuka {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 45px;
+  margin: 0 auto;
+}
+
+.page-1 .ans-card .ans-item {
+  font-size: 30px;
+  position: absolute;
+  top: 217px;
+  width: 210px;
+  padding: 0 10px;
+  line-height: 43px;
+  color: #5b4c1a;
+}
+
+.page-1 .ans-card .ans-item-1 {
+  left: 171px;
+}
+
+.page-1 .ans-card .ans-item-2 {
+  left: 543px;
 }
 .music-menu {
   position: absolute;
