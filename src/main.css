@@ -68,3 +68,10 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 .share-page {
   display: none;
 }
+
+.phone-r .close-video {
+  top: auto;
+  left: auto;
+  bottom: 20px;
+  right: 20px;
+}

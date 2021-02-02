@@ -93,6 +93,11 @@
 		{
 			"name": "TweenMax",
 			"src": "http://rmfp.people.com.cn/img/MAIN/2020/08/120400/static/js/TweenMax.js"
+		},
+		{
+			"name": "toast",
+			"afterbody": true,
+			"src": "./owo_modules/toast.js"
 		}
 	],
 	"styleList": [

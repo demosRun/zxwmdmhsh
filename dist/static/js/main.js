@@ -23,14 +23,11 @@ function getSC () {
   var screenScale = window.innerWidth / window.innerHeight
   // alert(document.querySelector('#container canvas'))
   if (screenScale < 1) {
+    document.body.classList.add('phone-r')
     setTimeout(() => {
       document.querySelector('#container canvas').style.transform = 'rotate(90deg)'
       document.querySelector('#container canvas').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
       document.querySelector('#container canvas').style.top = -(window.innerWidth - window.innerHeight) / 2 + 'px'
-      document.querySelector('.video-box video').style.transform = 'rotate(90deg)'
-      document.querySelector('.video-box video').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
-      document.querySelector('.video-box video').style.width = window.innerHeight + 'px'
-      document.querySelector('.video-box video').style.height = window.innerWidth + 'px'
 
       document.querySelector('.blinker-box-2').style.transform = 'rotate(90deg)'
       document.querySelector('.blinker-box-2').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'

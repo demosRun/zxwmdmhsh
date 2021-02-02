@@ -282,9 +282,9 @@ li {
   border-radius: 50px;
   transition: all 1s;
   opacity: 0;
-  background-color: black;
   pointer-events: none;
   z-index: 998;
+  background-color: black;
 }
 
 .page-1 .video-box video {
@@ -310,7 +310,7 @@ li {
 .page-1 .close-video {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
   z-index: 99;
 }
 
@@ -539,6 +539,26 @@ li {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.page-1 .fuka .num {
+  font-size: 34px;
+  color: red;
+  position: absolute;
+  line-height: 40px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: block;
+  height: 40px;
+}
+
+.page-1 .fuka .num1 {
+  left: 155px;
+}
+
+.page-1 .fuka .num2 {
+  left: 355px;
 }
 .music-menu {
   position: absolute;
