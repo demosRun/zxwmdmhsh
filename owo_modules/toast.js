@@ -19,7 +19,22 @@ owo.tool.toast = function (text, config) {
   toast.setAttribute("id", "toast")
   toast.setAttribute("class", "toast")
   // 设置样式
-  toast.style.cssText = "position:fixed;z-index:999;background-color:rgba(0, 0, 0, 0.8);bottom:9%;border-radius:" + parseInt(fontSize / 3) + "px;left:50%;transform: translateX(-50%) translate3d(0, 0, 0);margin:0 auto;text-align:center;color:white;max-width:60%;padding:" + parseInt(fontSize / 2) + "px 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:" + fontSize + 'px;'
+  toast.style.cssText = `position: fixed;
+  z-index: 1999;
+  background-color: rgba(0, 0, 0, 0.8);
+  bottom: 4%;
+  border-radius: 10px;
+  left: 50%;
+  transform: translateX(-50%) translate3d(0px, 0px, 0px);
+  margin: 0px auto;
+  text-align: center;
+  color: white;
+  max-width: 60%;
+  padding: 12px 27px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 36px;`
 
   toast.innerHTML = text
   container.appendChild(toast)

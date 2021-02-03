@@ -31,16 +31,17 @@
         img.so.so-gaotie-2(src="@|90.png|")
   .blinker-box.scale-box-2
     .scale-box
+      img.get-image(src="@|129.jpg|")
       .so.so-heka-0
         img.so.so-heka-1(src="@|319.png|" o-animation="shrink" go="page2")
         img.so.so-heka-2(src="@|173.png|" o-animation="shrink" o-tap="owo.script.share.showShare()")
         img.so.so-heka-3(src="@|143.png|" o-animation="flicker")
         .so.so-heka-4
-          img.so.so-heka-5(src="@|133.png|" o-tap="showBigShow('@|133.png|')")
-          img.so.so-heka-6(src="@|132.png|" o-tap="showBigShow('@|132.png|')")
-          img.so.so-heka-7(src="@|131.png|" o-tap="showBigShow('@|131.png|')")
-          img.so.so-heka-8(src="@|130.png|" o-tap="showBigShow('@|130.png|')")
-          img.so.so-heka-9(src="@|129.png|" o-tap="showBigShow('@|129.png|')")
+          img.so.so-heka-5(src="@|133.jpg|" o-tap="showBigShow('@|133.jpg|')")
+          img.so.so-heka-6(src="@|132.jpg|" o-tap="showBigShow('@|132.jpg|')")
+          img.so.so-heka-7(src="@|131.jpg|" o-tap="showBigShow('@|131.jpg|')")
+          img.so.so-heka-8(src="@|130.jpg|" o-tap="showBigShow('@|130.jpg|')")
+          img.so.so-heka-9(src="@|129.jpg|" o-tap="showBigShow('@|129.jpg|')")
         img.so.so-heka-10(src="@|108.png|")
       .ans-card
         h2 闯关题
@@ -52,12 +53,13 @@
           span.num.num2 +1
   .video-box
     img.close-video(src="@|close.svg|" o-tap="skip")
-    video(object-fill="cover" src="" x5-playsinline="true" x5-video-player-fullscreen="true" preload="auto" x5-video-orientation="portraint" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5")
+    video(object-fill="cover" src="" controls="controls" x5-video-orientation="portrait" preload="none" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-fullscreen="true" x5-video-player-type="h5")
   .hand-box
     img.hand(src="@|hand.png|" o-animation="shrink")
   .big-image-show.blinker-box-2
     img.close(src="@|close.png|" o-tap="closeBigShow")
     img.show(src="@|130.png|")
+  
 </template>
 
 <script>
@@ -91,7 +93,7 @@
         ],
         [
           ['内蒙古自治区的首府是哪座城市？', '乌兰浩特市', '呼和浩特市', 1],
-          ['马头琴是那一民族的乐器？', '蒙古族', '哈萨克族', 0],
+          ['马头琴是哪一民族的乐器？', '蒙古族', '哈萨克族', 0],
           ['蒙古民族“五畜纳祥”中的“五畜”是指哪些动物？', '马、牛、山羊、狗、鹿', '马、牛、绵羊、山羊、骆驼', 1],
         ],
         [
@@ -145,6 +147,10 @@
         var screenScale = window.innerWidth / window.innerHeight
         // alert(document.querySelector('#container canvas'))
         if (screenScale < 1) {
+          document.querySelector('#container canvas').style.transform = 'rotate(90deg)'
+          document.querySelector('#container canvas').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
+          document.querySelector('#container canvas').style.top = -(window.innerWidth - window.innerHeight) / 2 + 'px'
+
           document.querySelector('#container canvas').style.transform = 'rotate(90deg)'
           document.querySelector('#container canvas').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
           document.querySelector('#container canvas').style.top = -(window.innerWidth - window.innerHeight) / 2 + 'px'
@@ -287,7 +293,9 @@
       this.query('.hand').style.display = 'none'
       switch (this.data.step) {
         case 1:
-          this.query('.hand').style.left = '3%'
+          console.log(this.query('.get-image'))
+          this.query('.get-image').src="@|132.jpg|"
+          this.query('.hand').style.left = '2%'
           this.query('.hand').style.top = '71%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
@@ -323,15 +331,8 @@
             }, 0)
             // 循环往复的动画
             setTimeout(() => {
-              var tm = new TimelineMax({
-                repeat: -1,
-                yoyo: true,
-                repeatDelay: 0
-              });
-              tm.to(scene.getObjectByName('花').position, 6, {
-                y: -385
-              });
-              
+              new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('花').position, 6, {y: -385});
+              new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('click鼓').position, 8, {y: -687});
             }, 1000);
             this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_e449c1027856e0ac8d5595d05e5da131.mp4'
           }, 100);
@@ -339,8 +340,9 @@
           break;
         
         case 2:
-          this.query('.hand').style.left = '-14%'
-          this.query('.hand').style.top = '23%'
+          this.query('.get-image').src="@|133.jpg|"
+          this.query('.hand').style.left = '14%'
+          this.query('.hand').style.top = '59%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
           }, 3000);
@@ -372,16 +374,19 @@
               z: -585,
             }, 0)
             this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_2dc959d31cfa25bf8fc8a0614fa34cc3.mp4'
+            new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('蒙古人物').position, 20, {x: 3067});
           }, 800);
           console.log(menggu)
           break;
 
         case 3:
+          this.query('.get-image').src="@|131.jpg|"
+          this.query('.hand').style.left = '25%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
           }, 3000);
           var tl = new TimelineMax()
-          tl.to(this.data.dataGroup['menggu'].position, 2, {x: -2902,y: 310,z: 273}, 0)
+          tl.to(this.data.dataGroup['menggu'].position, 2, {x: -2982,y: 310,z: 273}, 0)
           temp = [
             {"id":1661,"name":"zang-人物","itemIndex":31,"opacity":100,"visible":true,"bounds":{"left":4701,"top":282,"index":150,"right":5724,"bottom":920,"width":220,"height":332,"relativeLeft":1057,"relativeTop":588,"relativeRight":796,"relativeBottom":406,"percentageLeft":50.98,"percentageRight":38.39,"percentageTop":48.75,"percentageBottom":33.66,"percentageHeight":27.52,"percentageWidth":10.61,"fileWeight":220,"fileHeight":332},"typename":"ArtLayer","width":220,"height":332,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1661.png|"},
             {"id":1290,"name":"zang-房子","itemIndex":30,"opacity":100,"visible":true,"bounds":{"left":4252,"top":270,"index":110,"right":5459,"bottom":947,"width":547,"height":377,"relativeLeft":465,"relativeTop":570,"relativeRight":1061,"relativeBottom":379,"percentageLeft":22.43,"percentageRight":51.18,"percentageTop":47.26,"percentageBottom":31.42,"percentageHeight":31.26,"percentageWidth":26.38,"fileWeight":547,"fileHeight":377},"typename":"ArtLayer","width":547,"height":377,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1290.png|"},
@@ -404,11 +409,13 @@
               z: -425,
             }, 0)
             this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_26c45a110c12843996ddd3c0c2ce3c39.mp4'
+            new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('zang-人物').position, 20, {x: 4780});
           }, 800);
           console.log(zangzu)
           break;
         case 4:
-          this.query('.hand').style.left = '59%'
+          this.query('.get-image').src="@|130.jpg|"
+          this.query('.hand').style.left = '-14%'
           this.query('.hand').style.top = '49%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
@@ -436,12 +443,14 @@
               z: -625,
             }, 0)
             this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_8a5eb316e3ac81cb725cb301abc1d75a.mp4'
+            new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('wei-音符').position, 6, {y: -268});
           }, 800);
           console.log(weizu)
           break;
         case 5:
-          this.query('.hand').style.left = '27%'
-          this.query('.hand').style.top = '40%'
+          this.query('.get-image').src="@|129.jpg|"
+          this.query('.hand').style.left = '4%'
+          this.query('.hand').style.top = '83%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
           }, 3000);
@@ -470,6 +479,7 @@
               z: -625,
             }, 0)
             this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_487e3ab99baff2ec3b24a1c8b7cccb94.mp4'
+            new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('ha-羊').position, 15, {x: 8298});
           }, 800);
           console.log(ha)
           break;
@@ -483,7 +493,8 @@
       this.query('.hand').style.display = 'none'
       switch (this.data.step) {
         case 2:
-          this.query('.hand').style.left = '3%'
+          this.query('.get-image').src="@|132.jpg|"
+          this.query('.hand').style.left = '2%'
           this.query('.hand').style.top = '71%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
@@ -523,7 +534,7 @@
               tm.to(scene.getObjectByName('花').position, 6, {
                 y: -385
               });
-              
+              new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('click鼓').position, 8, {y: -687});
             }, 1000);
             this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_e449c1027856e0ac8d5595d05e5da131.mp4'
           }, 100);
@@ -531,6 +542,7 @@
           break;
         
         case 1:
+          this.query('.get-image').src="@|133.jpg|"
           this.query('.hand').style.left = '18%'
           this.query('.hand').style.top = '49%'
           setTimeout(() => {
@@ -553,6 +565,7 @@
           ]
           const menggu = this.creatMode(temp, 'menggu')
           setTimeout(() => {
+            new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('蒙古人物').position, 20, {x: 3067});
             new TimelineMax({repeat: -1, yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('棕马').position, 3, {y: -385});
             new TimelineMax({repeat: -1, yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('黄马').position, 3, {x: 2854});
             new TimelineMax({repeat: -1, yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('羊群').position, 5, {z: 220});
@@ -572,6 +585,8 @@
           break;
 
         case 3:
+          this.query('.get-image').src="@|131.jpg|"
+          this.query('.hand').style.left = '25%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
           }, 3000);
@@ -599,11 +614,13 @@
               z: -425,
             }, 0)
             this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_26c45a110c12843996ddd3c0c2ce3c39.mp4'
+            new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('zang-人物').position, 20, {x: 4780});
           }, 800);
           console.log(zangzu)
           break;
         case 4:
-          this.query('.hand').style.left = '59%'
+          this.query('.get-image').src="@|130.jpg|"
+          this.query('.hand').style.left = '-14%'
           this.query('.hand').style.top = '49%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
@@ -631,12 +648,14 @@
               z: -625,
             }, 0)
             this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_8a5eb316e3ac81cb725cb301abc1d75a.mp4'
+            new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('wei-音符').position, 6, {y: -268});
           }, 800);
           console.log(weizu)
           break;
         case 5:
+          this.query('.get-image').src="@|129.jpg|"
           this.query('.hand').style.left = '6%'
-          this.query('.hand').style.top = '71%'
+          this.query('.hand').style.top = '84%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
           }, 3000);
@@ -665,6 +684,7 @@
               z: -625,
             }, 0)
             this.data.videoSrc = 'http://flv4.people.com.cn/videofile7/pvmsvideo/2019/2/1/QuanMeiTiZhiZuoErBu-ZhangRui_487e3ab99baff2ec3b24a1c8b7cccb94.mp4'
+            new TimelineMax({repeat: -1,yoyo: true,repeatDelay: 0}).to(scene.getObjectByName('ha-羊').position, 15, {x: 8298});
           }, 800);
           console.log(ha)
           break;
@@ -720,30 +740,36 @@
     select: function (num) {
       console.log('选择了!')
       if (!this.$target.getAttribute('daan')) {
-        owo.tool.toast('回答错误!')
+        owo.tool.toast('回答错误!', {
+          container: this.query('.scale-box-2 .scale-box')
+        })
         this.showAns()
       } else {
-        owo.tool.toast('回答正确!')
-        this.query('.ans-card').classList.add('active')
+        // owo.tool.toast('回答正确!', {
+        //   container: this.query('.scale-box-2 .scale-box')
+        // })
+        
         this.data.fuka ++
+        this.query('.fuka .num1').innerText = '+' + this.data.fuka
+        this.query('.fuka .num2').innerText = '+' + this.data.fuka
+        setTimeout(() => {
+          this.query('.ans-card').classList.add('active')
+        }, 3500);
         if (owo.script.page1.data.step < 5) {
-          this.query('.fuka .num1').innerText = '+' + this.data.fuka
-          this.query('.fuka .num2').innerText = '+' + this.data.fuka
-          
+          this.query('.get-image').classList.add('roat')
           setTimeout(() => {
+            this.query('.get-image').classList.remove('roat')
             this.query('.scale-box-2').style.top = '-100%'
-          }, 2000);
-          
-          setTimeout(() => {
             this.query('.ans-card').classList.remove('active')
             if (this.data.floatNum == 0) {
               this.step()
             } else {
               this.step1()
             }
-          }, 2000);
+          }, 7000);
         } else {
           this.query('.ans-card').classList.add('active')
+          this.query('.get-image').classList.add('roat')
           setTimeout(() => {
             this.query('.ans-card').style.display = 'none'
             this.query('.so-heka-0').style.display = 'block'
@@ -1010,11 +1036,11 @@ canvas {
 .hand {
   position: absolute;
   left: 69%;
-  top: 12%;
+  top: 28%;
   right: 0;
   bottom: 0;
   margin: auto;
-  width: 5%;
+  width: 7%;
   user-select: none;
   pointer-events: none;
   display: none;
@@ -1065,45 +1091,11 @@ canvas {
     height: 77px;
     background-image: url('@|xingji.png|');
   }
-  .ans-item {
-    font-size: 30px;
-    position: absolute;
-    
-    top: 217px;
-    width: 210px;
-    padding: 0 10px;
-    line-height: 43px;
-    color: #5b4c1a;
-  }
   .ans-item-1 {
-    left: 171px;
+    left: 55px;
   }
   .ans-item-2 {
-    left: 543px;
-  }
-}
-.blinker-box-2 {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 999;
-  display: none;
-  .show {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    height: 90%;
-  }
-  .close {
-    position: absolute;
-    right: 60px;
-    top: 20px;
+    left: 497px;
   }
 }
 .hand-box {
@@ -1126,6 +1118,7 @@ canvas {
     margin: auto;
     display: block;
     height: 40px;
+    font-weight: bold;
   }
   .num1 {
     left: 155px;
@@ -1134,5 +1127,34 @@ canvas {
     left: 355px;
   }
 }
-
+.so-heka-4 img {
+  width: 245px;
+}
+.get-image {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 9;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+}
+.scale-box-2 .scale-box {
+  margin: auto;
+}
+.ans-item {
+  background-image: url('@|xuanxiang-bg.png|');
+  position: absolute;
+  top: 217px;
+  width: 386px;
+  padding-left: 30px;
+  line-height: 72px;
+  color: #5b4c1a;
+  font-size: 26px;
+  background-repeat: no-repeat;
+}
 </style>

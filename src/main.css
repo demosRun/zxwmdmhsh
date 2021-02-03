@@ -72,6 +72,61 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 .phone-r .close-video {
   top: auto;
   left: auto;
-  bottom: 20px;
+  bottom: 50px;
   right: 20px;
+}
+
+@keyframes roatAni {
+  0%{
+      transform: rotate(360deg) scale(0.01);
+      opacity: 0;
+      }
+  25%{
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+      }
+  75%{
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+      }
+  85%{
+    opacity: 0;
+  }
+  100%{
+      transform: rotate(-360deg) scale(10);
+      opacity: 0;
+  }
+}
+
+.roat {
+  animation: roatAni 4s 1 0s linear;
+  animation-fill-mode: forwards;
+}
+
+.blinker-box-2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: none;
+}
+.blinker-box-2 .show {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 90%;
+}
+.blinker-box-2 .close {
+  position: absolute;
+  right: 60px;
+  top: 20px;
+}
+video {
+  object-fit:fill;
 }

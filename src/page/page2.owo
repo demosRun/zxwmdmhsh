@@ -4,21 +4,118 @@
   .scale-box
     .so.so-0
       img.so.so-1(src="@|293.png|")
-      img.so.so-2.ani(src="@|197.png|" style="animation-delay: 3.5s;")
-      img.so.so-3.ani(src="@|196.png|" style="animation-delay: 4.5s;")
-      img.so.so-4.ani(src="@|198.png|" style="animation-delay: 4s;")
-      img.so.so-5.ani(src="@|244.png|" style="animation-delay: 3s;")
-      img.so.so-6.ani(src="@|194.png|" style="animation-delay: 2.5s;")
-      img.so.so-7.ani(src="@|193.png|" style="animation-delay: 2s;")
-      img.so.so-8.ani(src="@|192.png|" style="animation-delay: 1.5s;")
-      img.so.so-9.ani(src="@|199.png|" style="animation-delay: 1s;")
-      img.so.so-10.ani(src="@|190.png|" style="animation-delay: 0.5s;")
+      img.so.so-2.ani(src="@|197.png|" style="animation-delay: 3.5s;" o-tap="showBox(7)")
+      img.so.so-3.ani(src="@|196.png|" style="animation-delay: 4.5s;" o-tap="showBox(6)")
+      img.so.so-4.ani(src="@|198.png|" style="animation-delay: 4s;" o-tap="showBox(8)")
+      img.so.so-5.ani(src="@|244.png|" style="animation-delay: 3s;" o-tap="showBox(5)")
+      img.so.so-6.ani(src="@|194.png|" style="animation-delay: 2.5s;" o-tap="showBox(4)")
+      img.so.so-7.ani(src="@|193.png|" style="animation-delay: 2s;" o-tap="showBox(3)")
+      img.so.so-8.ani(src="@|192.png|" style="animation-delay: 1.5s;" o-tap="showBox(2)")
+      img.so.so-9.ani(src="@|199.png|" style="animation-delay: 1s;" o-tap="showBox(1)")
+      img.so.so-10.ani(src="@|190.png|" style="animation-delay: 0.5s;" o-tap="showBox(0)")
     .so.so-11
       img.so.so-12(src="@|335.png|")
       img.so.so-13(src="@|176.png|")
+    .news-box
+      img.close-box(src="@|close2.svg|" o-tap="skip")
+      .news-box-0.news-box-item
+        h2 云南澜沧县翁基古村布朗族青年倪罗：“路通了，电来了，生意就火起来了”
+        h3 孙阳 赵晶 高亚永
+        img(src="@|user-1.jpg|")
+        .info 云南澜沧县翁基古村落，34岁的布朗族青年倪罗的民宿生意越来越红火。（贾翔 摄）
+        p 云南普洱景迈山古茶林中，深藏着一个典型的布朗族山寨——芒景村翁基古村落。这里气候温和，雨量充沛，林木茂盛，林下古茶和天然林错落相伴相生，满目郁葱。
+        p 布朗族青年倪罗就生活在这里。2020年1月，他迎来了双胞胎儿子的出生。伴随着这件喜事，他的民宿生意也越来越红火。
+        p “十多年前，我们这儿路不通、电不通，这么好的茶叶卖不出去，大家靠种甘蔗和玉米生活。日子挺难的！”2011年，倪罗做起了自己的民宿生意，在他看来，修路通电这样的基础设施建设，是他生意火起来的主要原因。
+        p “这些年，随着进村的公路修通，来的游客越来越多，我们这里风景好茶叶好，能留住不少游客呢。”2018年，倪罗重新翻修了自己的民宿客栈，现在靠民宿和茶叶生意，年收入超过了20万。
+        p “生活富起来以后，越来越多的人把孩子送到县城上学。跟以前相比，不仅要接受教育，更要接受好的教育。”倪罗说，自己的愿望是让孩子们走出大山，去城里闯闯。
+      .news-box-1.news-box-item
+        h2 甘肃省东乡县高山乡布楞沟村东乡族村民马建英：金融扶贫助我实现“养羊梦”
+        h3 孙阳 赵晶 高亚永
+        img(src="@|user-2.jpg|")
+        .info 甘肃省东乡县高山乡布楞沟村东乡族村民马建英：金融扶贫助我实现“养羊梦”
+        p “是农行帮我实现了我的‘养羊梦’！”甘肃省东乡县高山乡布楞沟村祥泰合作社负责人马建英激动地说。
+        p 东乡气候干旱少雨，之前以种地为生的马建英一家人日子过得紧巴巴。“虽然家里很穷，但是我一直喜欢养羊。以前村里不通道路，家里也没有自来水，养人都难，更别提养羊了。”马建英说。
+        p 东乡历来有养殖的传统，马建英对于养羊有种特殊的喜爱。但是以前村里的交通和用水都不方便，手头也没有足够的资金，一直束缚着马建英“大干一场”的“雄心”。
+        p 2015年，马建英到中国农业银行东乡县支行申请小额贷款，农行工作人员调查后上报审批，5万元的养殖贷款很快打到了马建英的账户上。“当时我用这些钱盖了一间圈舍，并且购进了近100只羊羔，当年养殖效益很好，不但按时还清了贷款本息，还赚了一笔。”马建英说。
+        p 第二年，为进一步扩大养殖规模，马建英又从县农行申请了10万元贷款，进一步扩大合作社规模。由于拥有良好的信用，县农行快速审批了10万元农户养殖贷款。2018年，为解决马建英等养殖户担保难问题，县农行积极联系省农担贷公司给马建英等7户养殖户提供担保，给马建英及其儿子各贷了20万元农户贷款，受困于资金的他终于有机会大干一场了。凭借着这些贷款的支持，马建英的合作社规模逐渐扩大，目前他养的羊存栏近400只，年收入可以达到15万元，此外，他还带动了15户困难群众增收。
+        p 5年的时间里，马建英的生活环境也发生了翻天覆地的变化。他说：“布楞沟村的自来水通了，村里的道路也硬化了，我还买了一辆面包车，生活出行都方便了。
+      .news-box-2.news-box-item
+        h2 云南瑞丽勐秀乡户瓦村景颇族青年勒干：“村里有了产业，我们就更有奔头了”
+        h3 孙阳 赵晶 高亚永
+        img(src="@|user-3.jpg|")
+        .info 云南瑞丽勐秀乡户瓦村，32岁的景颇族青年勒干搭上了“产业扶贫”快车。（贾翔 摄）
+        p 云南瑞丽勐秀乡户瓦村是个以景颇族为主的边境少数民族行政村。2019年，这里达到脱贫退出标准，成功脱帽退出贫困。小伙子勒干则是村里最早脱贫致富的那一批。
+        p 勒干有个好朋友，也是云南有名的致富带头人叫段必清。2009年大学毕业后，“村官”段必清被分配到户瓦村。他用筹集到的资金向村民租赁了15亩荒山，建起了养鸡场。2014年初，他成立了“瑞丽市户瓦山土鸡养殖专业合作社”，探索“合作社+公司+科技+农户”的养鸡生产模式。
+        p 勒干，就加入了这个合作社。如今，合作社已拥有50亩育雏基地、70亩林下养殖示范基地、5亩标准化屠宰冷库基地，年生产鸡蛋超过70万枚，户均增收9000余元。
+        p “从以前种甘蔗收入不高，现在我养殖了200多只鸡，家里收入也翻了十几倍。”不太会表达的勒干始终带着憨厚的微笑，在他看来，正是加入了朋友的扶贫产业，让他的生活有了质的提升。
+        p 如今，随着“精准扶贫精准脱贫”方略在云南“直过区”的落实深入，越来越多像勒干这样的青年正在出现，而他们正彰显着“直过民族”的新气象与希望。
+      .news-box-3.news-box-item
+        h2 云南勐海县布朗山乡曼囡村拉祜族青年扎培：“要多学习知识和技能，多去外面看看”
+        h3 孙阳 赵晶 高亚永
+        img(src="@|user-4.jpg|")
+        .info 云南勐海县布朗山乡曼囡村，22岁的拉祜族青年扎培在自家门前。（贾翔 摄）
+        p 作为新中国成立后，才由原始社会跨越几种社会形态过渡到社会主义社会的民族，“直过民族”受历史原因、自然地理、文化习俗等因素的影响，仍然相对落后闭塞。
+        p 长期以来，生活在“直过区”的人们，以刀耕火种、采集渔猎为生，缺乏对现代种养殖技术的熟练掌握，教育意识和学习能力也存在欠缺。
+        p 因此，扎培的出现，对他所在的整个拉祜族村寨而言，仿佛一道希望之光。
+        p 在驻村扶贫工作组组长罗志华的带领下，上过小学、有汉语基础的扎培开始学习组织召开群众大会，通过广播把党和国家的好政策传达给村里的老百姓。在扫盲教学中，扎培还可以用汉语和拉祜语给村民上课。
+        p 农闲时，工作队带着扎培外出打工，年收入增加了七八千，扎培也在逐步融入村外世界的过程中，收获了更多感悟，“要多学习知识和技能，多去外面看看，把自己的文化水平再提升起来。”
+        p 扎培分享说，他的愿望是成为一个像罗志华组长那样的致富带头人，带着乡亲们盖房子、买汽车，把日子过得更好。
+      .news-box-4.news-box-item
+        h2 走进海南五指山：黎村苗寨小康不掉队
+        h3 王庆芳 席秀琴 谢婷 毛雷 王硕
+        img(src="@|user-5.jpg|")
+        .info 五指山黎族、苗族同胞在茶园采茶。人民网海南频道孟凡盛 摄
+        p 俗话说“靠山吃山，靠水吃水。”地处海南中部生态核心区的五指山，因势利导找到了自己的“吃法”。
+        p 在通什镇番赛村委会空恋村，脱贫户王运锋正在精心打理自家的忧遁草，正是这看起来弱不禁风的小草，让他的生活发生了翻天覆地的变化。“我从2014年开始种植忧遁草，总共种了7.5亩。”王运锋掰着手指头告诉记者，“2015年收入5.3万元，2016年收入6.1万元，这个忧遁草让我盖起了两层楼房。”
+        p 五指山万家宝科技有限公司总经理杨国显告诉记者，他们组织农户到忧遁草基地参观，给农户介绍种植和管理的整个过程，还和农民签订合同保证回收，随后成立了农民专业合作社。“现在空恋村已经有83户贫困户种植忧遁草，种植面积达336亩，受益人口达560多人。每亩平均收入六至八千元，最高可达每亩一万多元。”杨国显笑着说。
+        p “五指山忧遁草，脱贫解忧幸福草，采的人小康，喝的人健康。”日前，海南五指山忧遁草登上扶贫公益广告，这棵海南人民的“幸福草”正被越来越多的人们知晓。
+      .news-box-5.news-box-item
+        h2 满族刺绣第四代传承人孙艳玲：让贫困家庭“富”起来
+        h3 朱紫阳
+        img(src="@|user-6.jpg|")
+        .info 孙艳玲与绣娘们交流刺绣技艺（受访者供图）
+        p 满族刺绣是满族祖先传承1300多年历史的手工刺绣技艺。在黑龙江省牡丹江市满族刺绣渤海靺鞨绣传习基地，琳琅满目的刺绣作品让人应接不暇，安宁恬静的雪乡、波光粼粼的镜泊湖、迎风傲立的雪松、憨态可掬的大熊猫，绣娘们灵巧的双手让一幅幅刺绣作品跃然于绣布之上。
+        p 第十三届全国人大代表、国家级非物质文化遗产满族刺绣第四代传承人孙艳玲说，从她6岁跟随姥姥学习满绣算起，这已经是她从事这行的第37个年头了。
+        p 为了更好地传承满族刺绣技艺，并带动更多人就业，2005年，孙艳玲在家乡创办了职业技能培训学校，培训对象主要针对下岗女职工、农村留守妇女与残疾人，专门招收学员学习满绣技艺。“吸收贫困家庭成员免费学习满绣刺绣技艺，并免费提供工具及原材料，将绣好的合格成品予以回收，让他们足不出户赚钱。”
+        p “一方面带动更多的人脱贫致富，另一方面把刺绣技艺传给更多的人，是我们非遗人最大的愿望。”孙艳玲说。
+      .news-box-6.news-box-item
+        h2 广西环江毛南族自治县下南乡景阳村村民莫仕长：高铁为发展注入新活力
+        h3 朱晓玲 实习生王仁慧
+        img(src="@|user-7.png|")
+        .info 莫仕长骑摩托车外出打零工。朱晓玲摄
+        p 环江县位于黔中高原南部边缘的斜坡地带，连绵的群山一度阻隔了当地群众的发展之路。
+        p 要致富，先修路！贵南高铁是广西首条设计时速350公里的高铁，贵南高铁建成后，乡亲们坐高铁1小时就能到南宁、贵阳。
+        p “通过培训，我已经拿到了焊工证。等到高铁通车后，外出务工就方便多了！”下南乡景阳村村民莫仕长言语间充满期待。
+        p 中铁十八局贵南高铁广西段二标项目经理郑法柱介绍，项目部成立了扶贫工作领导小组，首要工作就是修建施工便道，一方面满足施工需要，另一方面方便当地群众出行及物资流通。项目部在环江境内已新建改造施工道路约30条，把当地30多个乡镇村屯联系在一起，助力特色产业发展。
+        p 脱贫摘帽不是终点，而是新生活、新奋斗的起点。
+        p 环江毛南族自治县县委书记黄荣彪表示：“我们将持续奋斗、努力拼搏，全力做好乡村振兴这篇大文章，推动乡村产业、人才、文化、生态、组织全面振兴，让群众生活越过越红火，芝麻开花节节高。”  
+      .news-box-7.news-box-item
+        h2 青海省海东市互助土族自治县班彦新村村民吕有荣:见证贫困村的蝶变
+        h3 唐维红 马盛楠 李娜 李彤 丁涛 甘海琼 蒋莹
+        img(src="@|user-8.png|")
+        p 一条笔直的柏油路，沿着两边整齐的新房，通向村子尽头。顺着柏油路走进一座木质结构、干净整洁的小院，这里是青海省海东市互助土族自治县班彦新村村民吕有荣老人的家。
+        p “柏油路修好了，村子也更美了。”吕有荣提到这些年来村子里的新变化，脸上的皱纹都跟着笑开了花。
+        p 2016年，为解决班彦村山上129户村民的出行、吃水、就医等难题，青海省将老班彦村五社、六社列入易地扶贫搬迁规划。
+        p  “多亏党的政策好，这几年日子越过越舒坦。”吕有荣说，易地搬迁前，他们吃水都要走几里山路到山下去，搬迁后打开水龙头就出水。他还靠着好政策流转了几十亩地，自己搞起养殖。日子好了，收入不愁，孩子上学不愁，家里添置了不少新家具。变化说不完，老人和老伴打开了话匣子，脸上的笑意也没断过。
+      .news-box-8.news-box-item
+        h2 四川凉山昭觉县三河村彝族村民吉好也求：搬迁后的新生活，塘火一样旺
+        h3 唐嘉艺 朱虹
+        img(src="@|user-9.jpg|")
+        .info 吉好也求在新房院里接受采访。人民网 邸敬元摄
+        p 宽敞的院落干净整洁，涂着彝族纹饰的砖瓦房内，四室一厅，沙发、茶几、餐桌、电视等一应俱全，摆放井然有序。
+        p 吉好也求兴致勃勃地介绍着自家的新房，“住进新房子，生活有了很大变化。以前房子就一间，也没窗户，全家人吃住都在一处。现在，人和牲畜分开居住，有单独的卫生间和厨房。娃儿们也有了自己的房间。”从门口看进去，孩子们的房间墙上，贴着“三好学生”奖状和孩子喜欢的海报，一张手绘的国旗图下面，“祖国，我爱你！”几个汉字笔画工整，书写整齐。
+        p 谈到这两年的新生活，吉好也求总是抑制不住嘴角上扬——新房建有单独的卫生间，安了太阳能热水器，冬天都可以舒舒服服地用充足的热水洗脸、洗澡，“新生活，像火塘的火一样旺！”
+        p 安居才能乐业。住得好了，吉好也求奋斗的心气也更高了。搬家后的一年多，也求家开起了小卖部，每月有了持续收入。在四川农信扶贫小额贷款政策帮助下，吉好也求还购买了西门塔尔肉牛、猪、鸡，去年家庭人均年纯收入超过1万元。
+        p 2020年秋，在灿烂的午后阳光下，吉好也求有了新的心愿，希望能多挣点钱，供孩子们读书，将来能上大学去看看外面的世界。
+  .big-image-show.blinker-box-2
+    img.close(src="@|close.png|" o-tap="closeBigShow")
+    img.show(src="@|all.jpg|")
 </template>
 <script>
 module.exports = {
+  data: {
+    showAll: false
+  },
   created: function () {
     var screenScale = window.innerWidth / window.innerHeight
     // alert(document.querySelector('#container canvas'))
@@ -26,6 +123,9 @@ module.exports = {
       document.querySelector('.page2 .scale-box').style.transform = 'rotate(90deg)'
       document.querySelector('.page2 .scale-box').style.width = window.innerHeight + 'px'
       document.querySelector('.page2 .scale-box').style.height = window.innerWidth + 'px'
+
+      document.querySelector('.page2 .show').style.transform = 'rotate(90deg)'
+      document.querySelector('.page2 .show').style.height = '90vw'
 
       document.querySelector('.page2 .bg').style.transform = 'rotate(90deg)'
       document.querySelector('.page2 .bg').style.width = window.innerHeight + 'px'
@@ -36,7 +136,32 @@ module.exports = {
     setTimeout(() => {
       this.query('.so-1').style.opacity = '1'
     }, 6000);
-  }
+  },
+  skip: function () {
+    this.query('.news-box').style.top = '-1800px'
+    if (!this.data.showAll) {
+      this.data.showAll = true
+      owo.tool.toast('长按保存分享隐藏福卡!', {
+        container: this.query('.scale-box')
+      })
+      setTimeout(() => {
+        this.query('.blinker-box-2').style.display = 'block'
+      }, 1000);
+      
+    }
+  },
+  showBox: function (ind) {
+    document.querySelector('.news-box-item').scrollTop = 0
+    this.queryAll('.news-box-item').forEach(element => {
+      element.style.display = 'none'
+    });
+    this.query('.news-box').style.top = '0'
+    this.query('.news-box-' + ind).style.display = 'block'
+  },
+  closeBigShow: function () {
+    this.query('.big-image-show').style.display = 'none'
+    
+  },
 }
 </script>
 <style lang="less">
@@ -139,5 +264,61 @@ module.exports = {
   position: absolute;
   left: 0;
   top: 0;
+}
+.news-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: white;
+  z-index: 9;
+  width: 1000px;
+  height: 600px;
+  padding: 50px;
+  box-shadow: 2px 2px 10px #b7b1b1;
+  top: -1800px;
+  transition: top 1s;
+  .news-box-item {
+    height: 100%;
+    overflow: auto;
+    display: none;
+    h2 {
+      font-size: 42px;
+      text-align: center;
+      line-height: 63px;
+    }
+    h3 {
+      text-align: center;
+      line-height: 74px;
+      font-size: 24px;
+      color: #666;
+    }
+    img {
+      display: block;
+      margin: 25px auto;
+    }
+    p {
+      font-size: 36px;
+      line-height: 56px;
+      text-indent: 2em;
+      margin-bottom: 10px;
+    }
+    .info {
+      font-size: 25px;
+      line-height: 48px;
+      margin-bottom: 20px;
+      color: #999;
+      text-align: center;
+    }
+  }
+}
+.close-box {
+  position: absolute;
+  right: -33px;
+  top: -33px;
+  width: 70px;
+  height: 70px;
 }
 </style>

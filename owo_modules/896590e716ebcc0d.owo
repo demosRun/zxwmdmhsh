@@ -7,6 +7,7 @@
       .num-bar
     //- span.text Loading
     .num 0%
+    img.hengping(src="@|hengping.png|")
 </template>
 
 <script>
@@ -36,11 +37,11 @@
         "@|108.png|",
         "@|312.png|",
         "@|625.png|",
-        "@|131.png|",
-        "@|132.png|",
-        "@|133.png|",
-        "@|129.png|",
-        "@|130.png|",
+        "@|131.jpg|",
+        "@|132.jpg|",
+        "@|133.jpg|",
+        "@|129.jpg|",
+        "@|130.jpg|",
         "@|17.png|",
         "@|244.png|",
         "@|197.png|",
@@ -91,6 +92,7 @@
     show: function () {
       const mum = owo.query('.num')[0]
       const numBar = owo.query('.num-bar')[0]
+      const shanshui = owo.query('.shanshui')[0]
       this.preloadImages(this.data.imgList, (e) => {
         setTimeout(() => {
           owo.go('page1////true')
@@ -98,6 +100,7 @@
       }, (num) => {
         numBar.style.width = num + '%'
         mum.innerHTML = num + '%'
+        shanshui.style.opacity = (num / 100)
       })
     },
     preloadImage: function (src, successFn) {
@@ -156,8 +159,7 @@
   left: 0;
   right: 0;
   border-radius: 20px;
-  padding: 2px;
-  box-shadow: 2px 3px 9px #5d739c;
+  box-shadow: 1px 2px 9px #5d739c;
 }
 .num-bar {
   background-color: #84a09b;
@@ -188,6 +190,14 @@
   right: 0;
   margin: auto;
   top: 21%;
+  transition: opacity 0.5s;
+}
+.hengping {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 70px;
 }
 </style>
  

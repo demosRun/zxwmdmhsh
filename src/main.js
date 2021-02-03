@@ -3,9 +3,9 @@ function scrollIntoView () {
 }
 
 // 阻止微信拖动
-document.body.addEventListener('touchmove', function (e) {
-  e.preventDefault() // 阻止默认的处理方式(阻止下拉滑动的效果)
-}, {passive: false})
+// document.body.addEventListener('touchmove', function (e) {
+//   e.preventDefault() // 阻止默认的处理方式(阻止下拉滑动的效果)
+// }, {passive: false})
 
 setTimeout(() => {
   getSC()
@@ -25,9 +25,6 @@ function getSC () {
   if (screenScale < 1) {
     document.body.classList.add('phone-r')
     setTimeout(() => {
-      document.querySelector('#container canvas').style.transform = 'rotate(90deg)'
-      document.querySelector('#container canvas').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
-      document.querySelector('#container canvas').style.top = -(window.innerWidth - window.innerHeight) / 2 + 'px'
 
       document.querySelector('.blinker-box-2').style.transform = 'rotate(90deg)'
       document.querySelector('.blinker-box-2').style.left = -(window.innerHeight - window.innerWidth) / 2 + 'px'
