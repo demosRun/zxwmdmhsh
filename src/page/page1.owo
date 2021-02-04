@@ -33,7 +33,7 @@
     .scale-box
       img.get-image(src="@|129.jpg|")
       .so.so-heka-0
-        img.so.so-heka-1(src="@|319.png|" o-animation="shrink" go="page2")
+        img.so.so-heka-1(src="@|319.png|" o-animation="shrink" go="page2////true")
         img.so.so-heka-2(src="@|173.png|" o-animation="shrink" o-tap="owo.script.share.showShare()")
         img.so.so-heka-3(src="@|143.png|" o-animation="flicker")
         .so.so-heka-4

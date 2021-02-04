@@ -16,6 +16,9 @@
     .so.so-11
       img.so.so-12(src="@|335.png|")
       img.so.so-13(src="@|176.png|")
+    .button-box
+      img.replay(src="@|button-2.png|" o-tap="window.location.replace('')")
+      img.share(src="@|button-1.png|" o-tap="showBigShow")
     .news-box
       img.close-box(src="@|close2.svg|" o-tap="skip")
       .news-box-0.news-box-item
@@ -109,7 +112,8 @@
         p 2020年秋，在灿烂的午后阳光下，吉好也求有了新的心愿，希望能多挣点钱，供孩子们读书，将来能上大学去看看外面的世界。
   .big-image-show.blinker-box-2
     img.close(src="@|close.png|" o-tap="closeBigShow")
-    img.show(src="@|all.jpg|")
+    img.show(src="@|all.jpg|" o-tap="showHaibao")
+    img.qifen(src="@|qifen.png|")
 </template>
 <script>
 module.exports = {
@@ -119,13 +123,18 @@ module.exports = {
   created: function () {
     var screenScale = window.innerWidth / window.innerHeight
     // alert(document.querySelector('#container canvas'))
+    console.log(screenScale)
     if (screenScale < 1) {
-      document.querySelector('.page2 .scale-box').style.transform = 'rotate(90deg)'
-      document.querySelector('.page2 .scale-box').style.width = window.innerHeight + 'px'
-      document.querySelector('.page2 .scale-box').style.height = window.innerWidth + 'px'
+      // document.querySelector('.page2 .scale-box').style.transform = 'rotate(90deg)'
+      // document.querySelector('.page2 .scale-box').style.width = window.innerHeight + 'px'
+      // document.querySelector('.page2 .scale-box').style.height = window.innerWidth + 'px'
 
       document.querySelector('.page2 .show').style.transform = 'rotate(90deg)'
       document.querySelector('.page2 .show').style.height = '90vw'
+
+      document.querySelector('.page2 .qifen').style.transform = 'rotate(90deg)'
+      document.querySelector('.page2 .qifen').style.height = '90vw'
+      document.querySelector('.page2 .qifen').style.bottom = '0'
 
       document.querySelector('.page2 .bg').style.transform = 'rotate(90deg)'
       document.querySelector('.page2 .bg').style.width = window.innerHeight + 'px'
@@ -141,9 +150,7 @@ module.exports = {
     this.query('.news-box').style.top = '-1800px'
     if (!this.data.showAll) {
       this.data.showAll = true
-      owo.tool.toast('长按保存分享隐藏福卡!', {
-        container: this.query('.scale-box')
-      })
+      this.query('.button-box').classList.add('active')
       setTimeout(() => {
         this.query('.blinker-box-2').style.display = 'block'
       }, 1000);
@@ -159,8 +166,10 @@ module.exports = {
     this.query('.news-box-' + ind).style.display = 'block'
   },
   closeBigShow: function () {
-    this.query('.big-image-show').style.display = 'none'
-    
+    this.query('.blinker-box-2').style.display = 'none'
+  },
+  showBigShow: function () {
+    this.query('.blinker-box-2').style.display = 'block'
   },
 }
 </script>
@@ -192,7 +201,7 @@ module.exports = {
 }
 .so-1 {
   left: 83px;
-  top: 57px;
+  top: 101px;
   z-index: 0;
   user-select: none;
   pointer-events: none;
@@ -287,7 +296,7 @@ module.exports = {
     h2 {
       font-size: 42px;
       text-align: center;
-      line-height: 63px;
+      line-height: 68px;
     }
     h3 {
       text-align: center;
@@ -320,5 +329,45 @@ module.exports = {
   top: -33px;
   width: 70px;
   height: 70px;
+}
+.button-box {
+  position: absolute;
+  bottom: 0;
+  width: 1000px;
+  display: flex;
+  justify-content: space-around;
+  left: 0;
+  right: 0;
+  margin: auto;
+  img {
+    height: 66px;
+  }
+}
+.big-image-show .info {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+.button-box {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.5s;
+}
+.active.button-box {
+  display: flex;
+  opacity: 1;
+}
+.qifen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  height: 90%;
+  bottom: 2%;
+  user-select: none;
+  pointer-events: none;
 }
 </style>

@@ -693,7 +693,7 @@ li {
 
 .page2 .so-1 {
   left: 83px;
-  top: 57px;
+  top: 101px;
   z-index: 0;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -809,7 +809,7 @@ li {
 .page2 .news-box .news-box-item h2 {
   font-size: 42px;
   text-align: center;
-  line-height: 63px;
+  line-height: 68px;
 }
 
 .page2 .news-box .news-box-item h3 {
@@ -846,6 +846,56 @@ li {
   width: 70px;
   height: 70px;
 }
+
+.page2 .button-box {
+  position: absolute;
+  bottom: 0;
+  width: 1000px;
+  display: flex;
+  justify-content: space-around;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.page2 .button-box img {
+  height: 66px;
+}
+
+.page2 .big-image-show .info {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.page2 .button-box {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.5s;
+}
+
+.page2 .active.button-box {
+  display: flex;
+  opacity: 1;
+}
+
+.page2 .qifen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  height: 90%;
+  bottom: 2%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+/* 页面切换动画 */
 
 /* 动画效果 */
 @keyframes bounceInDown {

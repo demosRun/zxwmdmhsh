@@ -20,9 +20,11 @@
       console.log('播放音乐')
       if (!this.data.musicIsPlay) {
         this.data.musicIsPlay = true
-        this.data.music = new Audio("https://cunchu.site/ozzx/resource/bg.mp3")
-        this.data.music.volume = 0.2
-        this.data.music.loop = true
+        if (!this.data.music) {
+          this.data.music = new Audio("http://cunchu.site/people/music/%E6%AC%A2%E4%B9%90%E7%9A%84%E7%94%9F%E6%B4%BB%20-%20Joyous%20life%202_mini.mp3")
+          this.data.music.volume = 1
+          this.data.music.loop = true
+        }
         this.data.music.play()
         const icon = document.getElementsByClassName('music-icon')[0]
         icon.classList.add('active')
