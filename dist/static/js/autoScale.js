@@ -168,9 +168,10 @@ function getScale () {
           var deviseScale = autoScaleInfo.deviseW / autoScaleInfo.deviseH
           var scale = screenScale < deviseScale ? window.innerWidth / autoScaleInfo.deviseW : window.innerHeight / autoScaleInfo.deviseH
           autoScaleInfo.hideHeight = (autoScaleInfo.innerHeight - autoScaleInfo.deviseH * scale) / 2 /scale
+          autoScaleInfo.hideWidth = (autoScaleInfo.innerWidth - autoScaleInfo.deviseW * scale) / 2 /scale
           autoScaleInfo.zoom = scale
           
-          rotateBox.style.transform = 'scale(' + autoScaleInfo.zoom + ', ' + autoScaleInfo.zoom + ') translate(0, ' + autoScaleInfo.hideHeight + 'px)'
+          rotateBox.style.transform = 'scale(' + autoScaleInfo.zoom + ', ' + autoScaleInfo.zoom + ') translate(' + autoScaleInfo.hideWidth + 'px , ' + autoScaleInfo.hideHeight + 'px)'
           rotateBox.style.height = autoScaleInfo.deviseH + 'px'
           rotateBox.style.width = autoScaleInfo.deviseW + 'px'
           window.isRotate = false

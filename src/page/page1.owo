@@ -820,11 +820,13 @@
   background-size: cover;
 }
 .so-0 {
-  left: 0px;
-  top: 0px;
+  left: -50%;
+  top: 0;
   width: 1548px;
   height: 750px;
-  z-index: 0;;
+  z-index: 0;
+  margin: 0 auto;
+  right: -50%;
 }
 .so-1 {
   left: 584px;
@@ -1041,7 +1043,7 @@ canvas {
 }
 .hand {
   position: absolute;
-  left: 69%;
+  left: 64%;
   top: 28%;
   right: 0;
   bottom: 0;
