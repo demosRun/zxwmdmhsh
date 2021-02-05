@@ -112,18 +112,8 @@
       ],
       dati2: [
         [
-          ['内蒙古自治区的首府是哪座城市？', '乌兰浩特市', '呼和浩特市', 1],
-          ['马头琴是那一民族的乐器？', '蒙古族', '哈萨克族', 0],
-          ['蒙古民族“五畜纳祥”中的“五畜”是指哪些动物？', '马、牛、山羊、狗、鹿', '马、牛、绵羊、山羊、骆驼', 1],
-        ],
-        [
-          ['中国朝鲜族主要分布在？', '东北地区', '西北地区', 0],
-          ['以下哪一个是朝鲜族的传统乐器？', '马头琴', '伽倻琴', 1],
-          ['以下哪一个是朝鲜族的传统民歌？', '《阿里郎》', '《山丹丹开花红艳艳》', 0],
-        ],
-        [
-          ['2020年珠峰的最新高度是多少米？', '8848.86米', '8844.43米', 0],
-          ['以下哪个是“巴扎嘿”的意思？', '感叹词', '吉祥', 0],
+          ['冬不拉是哪个民族的乐器？', '蒙古族', '哈萨克族', 1],
+          ['“燕子”是哪个民族的经典民歌？', '藏族', '哈萨克族', 1]
         ],
         [
           ['维吾尔语中“亚克西”是什么意思？', '朋友', '很好', 1],
@@ -131,8 +121,18 @@
           ['喀纳斯湖在新疆什么地方？', '阿勒泰', '阿克苏', 0]
         ],
         [
-          ['冬不拉是哪个民族的乐器？', '蒙古族', '哈萨克族', 1],
-          ['“燕子”是哪个民族的经典民歌？', '藏族', '哈萨克族', 1]
+          ['2020年珠峰的最新高度是多少米？', '8848.86米', '8844.43米', 0],
+          ['以下哪个是“巴扎嘿”的意思？', '感叹词', '吉祥', 0],
+        ],
+        [
+          ['内蒙古自治区的首府是哪座城市？', '乌兰浩特市', '呼和浩特市', 1],
+          ['马头琴是哪一民族的乐器？', '蒙古族', '哈萨克族', 0],
+          ['蒙古民族“五畜纳祥”中的“五畜”是指哪些动物？', '马、牛、山羊、狗、鹿', '马、牛、绵羊、山羊、骆驼', 1],
+        ],
+        [
+          ['中国朝鲜族主要分布在？', '东北地区', '西北地区', 0],
+          ['以下哪一个是朝鲜族的传统乐器？', '马头琴', '伽倻琴', 1],
+          ['以下哪一个是朝鲜族的传统民歌？', '《阿里郎》', '《山丹丹开花红艳艳》', 0],
         ]
       ],
       datiIndex: 0,
@@ -492,7 +492,7 @@
       this.data.step++
       this.query('.hand').style.display = 'none'
       switch (this.data.step) {
-        case 2:
+        case 5:
           this.query('.get-image').src="@|132.jpg|"
           this.query('.hand').style.left = '2%'
           this.query('.hand').style.top = '71%'
@@ -541,7 +541,7 @@
           console.log(chaoxian)
           break;
         
-        case 1:
+        case 4:
           this.query('.get-image').src="@|133.jpg|"
           this.query('.hand').style.left = '18%'
           this.query('.hand').style.top = '49%'
@@ -549,8 +549,8 @@
             this.query('.hand').style.display = 'block'
           }, 3000);
           var tl = new TimelineMax()
-          tl.to(this.data.dataGroup['main'].position, 2, {
-            x: -165,
+          tl.to(this.data.dataGroup['zang'].position, 2, {
+            x: -4602,
             y: 0,
             z: 866
           }, 0)
@@ -591,7 +591,7 @@
             this.query('.hand').style.display = 'block'
           }, 3000);
           var tl = new TimelineMax()
-          tl.to(this.data.dataGroup['chaoxian'].position, 2, {x: -2902,y: 310,z: 273}, 0)
+          tl.to(this.data.dataGroup['wei'].position, 2, {x: -6806,y: 310,z: 273}, 0)
           temp = [
             {"id":1661,"name":"zang-人物","itemIndex":31,"opacity":100,"visible":true,"bounds":{"left":4701,"top":282,"index":150,"right":5724,"bottom":920,"width":220,"height":332,"relativeLeft":1057,"relativeTop":588,"relativeRight":796,"relativeBottom":406,"percentageLeft":50.98,"percentageRight":38.39,"percentageTop":48.75,"percentageBottom":33.66,"percentageHeight":27.52,"percentageWidth":10.61,"fileWeight":220,"fileHeight":332},"typename":"ArtLayer","width":220,"height":332,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1661.png|"},
             {"id":1290,"name":"zang-房子","itemIndex":30,"opacity":100,"visible":true,"bounds":{"left":4252,"top":270,"index":110,"right":5459,"bottom":947,"width":547,"height":377,"relativeLeft":465,"relativeTop":570,"relativeRight":1061,"relativeBottom":379,"percentageLeft":22.43,"percentageRight":51.18,"percentageTop":47.26,"percentageBottom":31.42,"percentageHeight":31.26,"percentageWidth":26.38,"fileWeight":547,"fileHeight":377},"typename":"ArtLayer","width":547,"height":377,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1290.png|"},
@@ -618,7 +618,7 @@
           }, 800);
           console.log(zangzu)
           break;
-        case 4:
+        case 2:
           this.query('.get-image').src="@|130.jpg|"
           this.query('.hand').style.left = '-14%'
           this.query('.hand').style.top = '49%'
@@ -626,7 +626,7 @@
             this.query('.hand').style.display = 'block'
           }, 3000);
           var tl = new TimelineMax()
-          tl.to(this.data.dataGroup['zang'].position, 2, {x: -4602,y: 190,z: 273}, 0)
+          tl.to(this.data.dataGroup['ha'].position, 2, {x: -8402,y: 190,z: 273}, 0)
           temp = [
             {"id":1668,"name":"wei-人物","itemIndex":52,"opacity":100,"visible":true,"bounds":{"left":6647,"top":288,"index":293,"right":7356,"bottom":933,"width":324,"height":345,"relativeLeft":538,"relativeTop":488,"relativeRight":855,"relativeBottom":264,"percentageLeft":31.33,"percentageRight":49.79,"percentageTop":44.48,"percentageBottom":24.06,"percentageHeight":31.44,"percentageWidth":18.87,"fileWeight":324,"fileHeight":345},"typename":"ArtLayer","width":324,"height":345,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1668.png|"},
             {"id":594,"name":"wei-音符","itemIndex":51,"opacity":100,"visible":true,"bounds":{"left":6648,"top":248,"index":317,"right":7500,"bottom":837,"width":482,"height":369,"relativeLeft":524,"relativeTop":368,"relativeRight":711,"relativeBottom":360,"percentageLeft":30.51,"percentageRight":41.4,"percentageTop":33.54,"percentageBottom":32.81,"percentageHeight":33.63,"percentageWidth":28.07,"fileWeight":454,"fileHeight":365},"typename":"ArtLayer","width":482,"height":369,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|594.png|"},
@@ -652,15 +652,21 @@
           }, 800);
           console.log(weizu)
           break;
-        case 5:
+        case 1:
           this.query('.get-image').src="@|129.jpg|"
           this.query('.hand').style.left = '6%'
           this.query('.hand').style.top = '84%'
           setTimeout(() => {
             this.query('.hand').style.display = 'block'
           }, 3000);
+          
           var tl = new TimelineMax()
-          tl.to(this.data.dataGroup['wei'].position, 2, {x: -6802,y: 190,z: 273}, 0)
+          tl.to(this.data.dataGroup['main'].position, 2, {
+            x: -165,
+            y: 0,
+            z: 866
+          }, 0)
+          // tl.to(this.data.dataGroup['wei'].position, 2, {x: -6802,y: 190,z: 273}, 0)
           temp = [
             {"id":1330,"name":"ha-老鹰","itemIndex":40,"opacity":100,"visible":true,"bounds":{"left":8678,"top":626,"index":120,"right":9607,"bottom":886,"width":80,"height":112,"relativeLeft":1133,"relativeTop":774,"relativeRight":831,"relativeBottom":111,"percentageLeft":55.43,"percentageRight":40.65,"percentageTop":77.63,"percentageBottom":11.13,"percentageHeight":11.23,"percentageWidth":3.91,"fileWeight":80,"fileHeight":112},"typename":"ArtLayer","width":80,"height":112,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1330.png|"},
             {"id":1666,"name":"ha-minzu","itemIndex":39,"opacity":100,"visible":true,"bounds":{"left":8429,"top":586,"index":110,"right":9458,"bottom":948,"width":192,"height":270,"relativeLeft":872,"relativeTop":678,"relativeRight":980,"relativeBottom":49,"percentageLeft":42.66,"percentageRight":47.94,"percentageTop":68,"percentageBottom":4.91,"percentageHeight":27.08,"percentageWidth":9.39,"fileWeight":192,"fileHeight":270},"typename":"ArtLayer","width":192,"height":270,"kind":"NORMAL","isBackgroundLayer":false,"fileName":"@|1666.png|"},

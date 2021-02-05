@@ -41,6 +41,7 @@ img {
   position: absolute;
   top: 5%;
   right: 0;
-  width: 67%;
+  max-width: 67%;
+  max-height: 60%;
 }  
 </style>

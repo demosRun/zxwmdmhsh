@@ -414,18 +414,8 @@
           ],
           "dati2": [
             [
-              ["内蒙古自治区的首府是哪座城市？", "乌兰浩特市", "呼和浩特市", 1],
-              ["马头琴是那一民族的乐器？", "蒙古族", "哈萨克族", 0],
-              ["蒙古民族“五畜纳祥”中的“五畜”是指哪些动物？", "马、牛、山羊、狗、鹿", "马、牛、绵羊、山羊、骆驼", 1]
-            ],
-            [
-              ["中国朝鲜族主要分布在？", "东北地区", "西北地区", 0],
-              ["以下哪一个是朝鲜族的传统乐器？", "马头琴", "伽倻琴", 1],
-              ["以下哪一个是朝鲜族的传统民歌？", "《阿里郎》", "《山丹丹开花红艳艳》", 0]
-            ],
-            [
-              ["2020年珠峰的最新高度是多少米？", "8848.86米", "8844.43米", 0],
-              ["以下哪个是“巴扎嘿”的意思？", "感叹词", "吉祥", 0]
+              ["冬不拉是哪个民族的乐器？", "蒙古族", "哈萨克族", 1],
+              ["“燕子”是哪个民族的经典民歌？", "藏族", "哈萨克族", 1]
             ],
             [
               ["维吾尔语中“亚克西”是什么意思？", "朋友", "很好", 1],
@@ -433,8 +423,18 @@
               ["喀纳斯湖在新疆什么地方？", "阿勒泰", "阿克苏", 0]
             ],
             [
-              ["冬不拉是哪个民族的乐器？", "蒙古族", "哈萨克族", 1],
-              ["“燕子”是哪个民族的经典民歌？", "藏族", "哈萨克族", 1]
+              ["2020年珠峰的最新高度是多少米？", "8848.86米", "8844.43米", 0],
+              ["以下哪个是“巴扎嘿”的意思？", "感叹词", "吉祥", 0]
+            ],
+            [
+              ["内蒙古自治区的首府是哪座城市？", "乌兰浩特市", "呼和浩特市", 1],
+              ["马头琴是哪一民族的乐器？", "蒙古族", "哈萨克族", 0],
+              ["蒙古民族“五畜纳祥”中的“五畜”是指哪些动物？", "马、牛、山羊、狗、鹿", "马、牛、绵羊、山羊、骆驼", 1]
+            ],
+            [
+              ["中国朝鲜族主要分布在？", "东北地区", "西北地区", 0],
+              ["以下哪一个是朝鲜族的传统乐器？", "马头琴", "伽倻琴", 1],
+              ["以下哪一个是朝鲜族的传统民歌？", "《阿里郎》", "《山丹丹开花红艳艳》", 0]
             ]
           ],
           "datiIndex": 0,
@@ -2041,7 +2041,7 @@
           this.query('.hand').style.display = 'none';
 
           switch (this.data.step) {
-            case 2:
+            case 5:
               this.query('.get-image').src = "./static/resource/132.jpg";
               this.query('.hand').style.left = '2%';
               this.query('.hand').style.top = '71%';
@@ -2384,7 +2384,7 @@
               console.log(chaoxian);
               break;
 
-            case 1:
+            case 4:
               this.query('.get-image').src = "./static/resource/133.jpg";
               this.query('.hand').style.left = '18%';
               this.query('.hand').style.top = '49%';
@@ -2392,8 +2392,8 @@
                 _this5.query('.hand').style.display = 'block';
               }, 3000);
               var tl = new TimelineMax();
-              tl.to(this.data.dataGroup['main'].position, 2, {
-                x: -165,
+              tl.to(this.data.dataGroup['zang'].position, 2, {
+                x: -4602,
                 y: 0,
                 z: 866
               }, 0);
@@ -2681,8 +2681,8 @@
                 _this5.query('.hand').style.display = 'block';
               }, 3000);
               var tl = new TimelineMax();
-              tl.to(this.data.dataGroup['chaoxian'].position, 2, {
-                x: -2902,
+              tl.to(this.data.dataGroup['wei'].position, 2, {
+                x: -6806,
                 y: 310,
                 z: 273
               }, 0);
@@ -2941,7 +2941,7 @@
               console.log(zangzu);
               break;
 
-            case 4:
+            case 2:
               this.query('.get-image').src = "./static/resource/130.jpg";
               this.query('.hand').style.left = '-14%';
               this.query('.hand').style.top = '49%';
@@ -2949,8 +2949,8 @@
                 _this5.query('.hand').style.display = 'block';
               }, 3000);
               var tl = new TimelineMax();
-              tl.to(this.data.dataGroup['zang'].position, 2, {
-                x: -4602,
+              tl.to(this.data.dataGroup['ha'].position, 2, {
+                x: -8402,
                 y: 190,
                 z: 273
               }, 0);
@@ -3176,7 +3176,7 @@
               console.log(weizu);
               break;
 
-            case 5:
+            case 1:
               this.query('.get-image').src = "./static/resource/129.jpg";
               this.query('.hand').style.left = '6%';
               this.query('.hand').style.top = '84%';
@@ -3184,11 +3184,12 @@
                 _this5.query('.hand').style.display = 'block';
               }, 3000);
               var tl = new TimelineMax();
-              tl.to(this.data.dataGroup['wei'].position, 2, {
-                x: -6802,
-                y: 190,
-                z: 273
-              }, 0);
+              tl.to(this.data.dataGroup['main'].position, 2, {
+                x: -165,
+                y: 0,
+                z: 866
+              }, 0); // tl.to(this.data.dataGroup['wei'].position, 2, {x: -6802,y: 190,z: 273}, 0)
+
               temp = [{
                 "id": 1330,
                 "name": "ha-老鹰",
